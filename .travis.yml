@@ -1,0 +1,44 @@
+language: generic
+matrix:
+  include:
+    - language: python
+      name: "ui-server"
+      python: 3.6
+      cache: pip
+      before_install:
+        - cd ui-server
+      install:
+        - pip install -r requirements.txt
+        - wget https://github.com/protocolbuffers/protobuf/releases/download/v3.6.1/protoc-3.6.1-linux-x86_64.zip
+        - unzip protoc-3.6.1-linux-x86_64.zip
+      script:
+        - ./bin/protoc --proto_path='../shared/protos/' commands.proto --python_out='./src/'
+        # - pylint src/
+    - language: node_js
+      name: "client-ui"
+      node_js: 8
+      branches:
+        except:
+          - gh-pages
+      cache:
+        directories:
+          - "$HOME/.npm"
+      before_install:
+        - cd ui
+        - export DISPLAY=:99.0
+        - sh -e /etc/init.d/xvfb start
+      install:
+        - npm ci
+      script:
+        # Not currently used since Protobuf.js loads the .proto directly
+        # - node node_modules/protobufjs/cli/bin/pbjs -t static-module -o ../shared/protos/commands.js ../shared/protos/commands.proto
+        # - node node_modules/protobufjs/cli/bin/pbts -o ../shared/protos/commands.d.ts ../shared/protos/commands.js
+        # - ng test --watch=false
+        - ng build --prod --base-href=/northernpike/
+      deploy:
+        provider: pages
+        skip_cleanup: true
+        github_token: $GITHUB_TOKEN
+        on:
+          branch: master
+        local_dir: ui/dist/controlpanel

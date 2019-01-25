@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+//  ===========================
+//   SERVER -> CLIENT COMMANDS
+//  ===========================
+
+message Alert {
+    enum AlertLevel {
+        ERROR = 0;
+        WARN = 1;
+        INFO = 2;
+        DEBUG = 3;
+        SUCCESS = 4;
+    }
+    string alert_text = 1;
+    AlertLevel alert_level = 2;
+}
+
+message Instrument {
+    // TODO: DESIGN INSTRUMENT COMMAND
+}
+
+//  ===========================
+//   CLIENT -> SERVER COMMANDS
+//  ===========================
+
+message Toggle {
+    string name = 1;
+    bool value = 2;
+}
+
+message Controller {
+    message AnalogAxis {
+        string name = 1;
+        float x_position = 2;
+        float y_position = 3;
+        float angle_degrees = 4;
+        float angle_radians = 5;
+    }
+    repeated AnalogAxis axes = 1;
+}
+
+//  =================
+//   WRAPPER MESSAGE
+//  =================
+
+message Command {
+    google.protobuf.Timestamp message_time = 1;
+    oneof command_type {
+        Alert alert = 2;
+        Instrument instrument = 3;
+        Toggle toggle = 4;
+        Controller controller = 5;
+    }
+}

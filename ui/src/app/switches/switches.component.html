@@ -1,0 +1,8 @@
+<div class="container-flex p-1 border">
+	<div class="btn-group-toggle p-1" *ngFor="let switch of switchState | keyvalue">
+		<label class="btn-outline-primary w-100" ngbButtonLabel>
+			<input type="checkbox" (change)="this.changeState(switch.key)" [(ngModel)]="switch.value"
+				   ngbButton> {{ switch.key }}
+		</label>
+	</div>
+</div>

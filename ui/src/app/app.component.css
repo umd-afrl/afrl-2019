@@ -1,0 +1,10 @@
+.camButton {
+	border: none;
+	padding: 0;
+	background: white;
+}
+
+/* Fix notification popup 'X' button not being vertically centered */
+.notifier__container {
+	line-height: 1rem;
+}
