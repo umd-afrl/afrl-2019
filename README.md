@@ -1,10 +1,12 @@
-![](images/logo.png)
-# UMD Robotics Club
-# NorthernPike
-[![Build Status](https://travis-ci.com/UMNDuluthRobotics/northernpike.svg?branch=master)](https://travis-ci.com/UMNDuluthRobotics/northernpike)
+# UMD AFRL University Design Challenge 2019 Team
+# MATE
+[![Build Status](https://travis-ci.com/jnowaczek/afrl-2019.svg?token=bFz5PGAqoiTADksEpaAs&branch=master)](https://travis-ci.com/jnowaczek/afrl-2019)
 
-The University of Minnesota Duluth Robotics Club's 2018/2019 Project.  Northern Pike is an ROV capable of reaching 50m depths for exploration and eventually sample collection.
+University of Minnesota Duluth 2019 AFRL University Design Challenge Team repository.
 
 ## Subprojects
 ### [Client-UI](ui/README.md)
-Current progress avaliable on [Github Pages](https://umnduluthrobotics.github.io/northernpike/)
+  User interface displayed in a web browser
+
+### UI-Server
+  Serves Client-UI and receives data from sensors
