@@ -1,4 +1,6 @@
 language: generic
+notifications:
+  - slack: afrl2019:0Yg2q14Rn1D6uz5gsfbkXfXL
 matrix:
   include:
     - language: python
