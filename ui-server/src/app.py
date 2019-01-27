@@ -6,7 +6,7 @@ import commands_pb2
 
 WEB_ROOT = Path(__file__).parents[2] / 'ui/dist/controlpanel/'
 
-
+#Kirsi was here
 # Serve index.html when '/' is requested
 async def root_handler(request):
     return web.FileResponse(os.path.join(WEB_ROOT, 'index.html'))
