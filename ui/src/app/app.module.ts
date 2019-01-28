@@ -20,6 +20,7 @@ import {BatteryGaugeComponent} from './battery-gauge/battery-gauge.component';
 import {SlideSwitchComponent} from './slide-switch/slide-switch.component';
 import {LightGaugeComponent} from './light-gauge/light-gauge.component';
 import {NotifierModule, NotifierOptions} from 'angular-notifier';
+import { ButtonComponent } from './button/button.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -74,7 +75,8 @@ const customNotifierOptions: NotifierOptions = {
 		ThrusterGaugeComponent,
 		BatteryGaugeComponent,
 		SlideSwitchComponent,
-		LightGaugeComponent
+		LightGaugeComponent,
+		ButtonComponent
 	],
 	imports: [
 		BrowserModule,

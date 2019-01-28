@@ -42,6 +42,7 @@ async def websocket_handler(request):
     await socket.send_bytes(proto.SerializeToString())
     print('websocket toggle message sent')
 
+    # ToDo knows to run target method given by button
     async for msg in socket:
         print('websocket message received: ' + msg.data)
         if msg.type == http_websocket.WSMsgType.TEXT:
@@ -59,6 +60,7 @@ async def websocket_handler(request):
 
     return socket
 
+# ToDo add test target method
 
 async def on_shutdown(app):
     # close peer connections

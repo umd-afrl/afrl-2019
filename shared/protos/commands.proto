@@ -31,6 +31,10 @@ message Toggle {
     bool value = 2;
 }
 
+message Button {
+    string name = 1;
+}
+
 message Controller {
     message AnalogAxis {
         string name = 1;
@@ -53,5 +57,7 @@ message Command {
         Instrument instrument = 3;
         Toggle toggle = 4;
         Controller controller = 5;
+        Button button = 6;
     }
 }
+

@@ -49,7 +49,17 @@ export class CommandService {
 		CommandFactory.createCommand(decoded.commandType, decoded, this, this.notifierService).execute();
 	}
 
-	private composeMessage(source: any): void {
-		console.log('compose message: ' + source);
+	public composeMessage(commandType: string, args: any): void {
+		//console.log('compose message: ' + source);
+		// Exemplary payload
+		var payload = {button: args};
+
+		// Verify the payload if necessary (i.e. when possibly incomplete or invalid)
+		//var errMsg = this.commandMessage.verify(payload);
+		//if (errMsg)
+		//	throw Error(errMsg);
+
+		// Create a new message
+		this.socket.next( this.commandMessage.create(payload));
 	}
 }
