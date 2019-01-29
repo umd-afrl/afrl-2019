@@ -4,6 +4,7 @@ import {CameraviewComponent} from './cameraview/cameraview.component';
 import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {ImageLoaderComponent} from './image-loader/image-loader.component';
 
 @NgModule({
 	imports: [
@@ -13,7 +14,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 	],
 	declarations: [
 		VideoComponent,
-		CameraviewComponent
+		CameraviewComponent,
+		ImageLoaderComponent
 	],
 	exports: [
 		VideoComponent,
