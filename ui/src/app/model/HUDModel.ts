@@ -9,6 +9,9 @@ export class HUDModel {
 	// Unidirectional Client to Server values
 	public lightIntensity: BehaviorSubject<number>;
 
+	//ToDo make behavior subject <image>, write image command, have component that watches behavior for changes to make picture changes
+	public imageChange : BehaviorSubject<{[image: string]: boolean}>;
+
 	// Bidirectional values
 	public toggles: BehaviorSubject<{[name: string]: boolean}>;
 
@@ -22,5 +25,7 @@ export class HUDModel {
 		this.lightIntensity = new BehaviorSubject(.75);
 
 		this.toggles = new BehaviorSubject({['Lights']: false, ['Toggle 2']: false, ['Toggle 3']: false, ['Toggle 4']: false});
+
+		this.imageChange = new BehaviorSubject({['Lights']: false});
 	}
 }

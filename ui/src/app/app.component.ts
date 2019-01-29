@@ -6,5 +6,5 @@ import {Component} from '@angular/core';
 	styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-	title = 'Northern Pike Control Panel';
+	title = 'AFRL UDC UMD Control Panel';
 }
