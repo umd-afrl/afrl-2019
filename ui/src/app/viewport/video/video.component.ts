@@ -7,7 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class VideoComponent implements OnInit {
 
-	@Input() public streamURL = 'https://' + location.host + ':8081/?action=stream';
+	//@Input() public streamURL = 'https://' + location.host + ':8081/?action=stream';
 
 	constructor() {
 	}

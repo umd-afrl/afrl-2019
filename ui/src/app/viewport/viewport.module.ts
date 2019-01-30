@@ -19,7 +19,8 @@ import {ImageLoaderComponent} from './image-loader/image-loader.component';
 	],
 	exports: [
 		VideoComponent,
-		CameraviewComponent
+		CameraviewComponent,
+		ImageLoaderComponent
 	]
 })
 export class ViewportModule {
