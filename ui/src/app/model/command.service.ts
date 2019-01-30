@@ -45,14 +45,14 @@ export class CommandService {
 
 	private parseMessage(msg: MessageEvent): void {
 		const decoded = this.commandMessage.decode(new Uint8Array(msg.data));
-		console.log('Decoded Command message:', decoded);
+		console.log('Decoded IncomingCommand message:', decoded);
 		CommandFactory.createCommand(decoded.commandType, decoded, this, this.notifierService).execute();
 	}
 
 	public composeMessage(commandType: string, args: any): void {
 		//console.log('compose message: ' + source);
 		// Exemplary payload
-		var payload = {button: args};
+		let payload = {button: args};
 
 		// Verify the payload if necessary (i.e. when possibly incomplete or invalid)
 		//var errMsg = this.commandMessage.verify(payload);
@@ -60,6 +60,6 @@ export class CommandService {
 		//	throw Error(errMsg);
 
 		// Create a new message
-		this.socket.next( this.commandMessage.create(payload));
+		this.socket.next(new MessageEvent(MessageEvent, {data: this.commandMessage.encode(this.commandMessage.create(payload)).finish()}));
 	}
 }

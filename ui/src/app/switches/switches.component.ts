@@ -17,7 +17,7 @@ export class SwitchesComponent implements OnInit {
 
 	changeState() {
 		this.commandService.hudModel.toggles.next(this.switchState);
-		// this.service.execCommand(new ToggleCommand(index));
+		// this.service.execCommand(new IncomingToggleCommand(index));
 	}
 
 	ngOnInit() {

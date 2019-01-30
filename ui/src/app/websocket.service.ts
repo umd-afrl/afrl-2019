@@ -33,6 +33,7 @@ export class WebsocketService {
 		const observer = {
 			next: (data: MessageEvent) => {
 				if (ws.readyState === WebSocket.OPEN) {
+					console.log('Outgoing WS message:', data);
 					ws.send(data.data);
 				}
 			}

@@ -1,12 +1,14 @@
-import os
 import asyncio
+import os
 from pathlib import Path
-from aiohttp import web, http_websocket, ClientWebSocketResponse
+
 import commands_pb2
+from aiohttp import web, http_websocket
 
 WEB_ROOT = Path(__file__).parents[2] / 'ui/dist/controlpanel/'
+SERVER = web.Application()
 
-#Kirsi was here
+
 # Serve index.html when '/' is requested
 async def root_handler(request):
     return web.FileResponse(os.path.join(WEB_ROOT, 'index.html'))
@@ -44,14 +46,15 @@ async def websocket_handler(request):
 
     # ToDo knows to run target method given by button
     async for msg in socket:
-        print('websocket message received: ' + msg.data)
+        print(msg.type)
         if msg.type == http_websocket.WSMsgType.TEXT:
+            print('websocket text message received: ' + msg.data)
             if msg.data == 'close':
                 await socket.close()
             else:
-                data = proto.SerializeToString()
-                await socket.send_bytes(data)
-                print('Sent websocket test message')
+                proto = commands_pb2.Command()
+                decoded = proto.ParseFromString(msg.data)
+                print('websocket commandMessage received: ' + decoded)
         elif msg.type == http_websocket.WSMsgType.ERROR:
             print('ws connection closed with exception %s' %
                   socket.exception())
@@ -59,6 +62,7 @@ async def websocket_handler(request):
     print('websocket connection closed')
 
     return socket
+
 
 # ToDo add test target method
 
@@ -68,10 +72,47 @@ async def on_shutdown(app):
         await socket.close()
 
 
-if __name__ == '__main__':
-    SERVER = web.Application()
+# if __name__ == '__main__':
+#     SERVER = web.Application()
+#     SERVER.on_shutdown.append(on_shutdown)
+#     SERVER.router.add_get('/', root_handler)
+#     SERVER.router.add_get('/ws', websocket_handler)
+#     SERVER.router.add_static(prefix='/', path=WEB_ROOT)
+#     web.run_app(SERVER, host='10.8.0.2', port=8080)
+
+def main():
+    # Kick off the web/ws server
     SERVER.on_shutdown.append(on_shutdown)
     SERVER.router.add_get('/', root_handler)
     SERVER.router.add_get('/ws', websocket_handler)
     SERVER.router.add_static(prefix='/', path=WEB_ROOT)
-    web.run_app(SERVER, host='127.0.0.1', port=8080)
+
+    async def start():
+        global runner, site
+        runner = web.AppRunner(SERVER)
+        await runner.setup()
+        site = web.TCPSite(runner, '127.0.0.1', 8081)
+        await site.start()
+        # site2 = web.TCPSite(runner, '169.254.202.121', 8080)
+        # await site2.start()
+
+    async def end():
+        await SERVER.shutdown()
+
+    asyncio.get_event_loop().run_until_complete(start())
+
+    # Main program "loop"
+    try:
+        asyncio.get_event_loop().run_forever()
+    except KeyboardInterrupt:
+        pass
+    finally:
+        # .. and kill the web/ws server
+        asyncio.get_event_loop().run_until_complete(end())
+
+    # Stop the main event loop
+    asyncio.get_event_loop().close()
+
+
+if __name__ == '__main__':
+    main()

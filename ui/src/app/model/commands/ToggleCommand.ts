@@ -1,7 +1,7 @@
-import {Command} from './Command';
+import {IncomingCommand, OutgoingCommand} from './Command';
 import {CommandService} from '../command.service';
 
-export class ToggleCommand implements Command {
+export class IncomingToggleCommand implements IncomingCommand {
 	private readonly toggleName: string;
 	private readonly newState: boolean;
 
@@ -16,3 +16,16 @@ export class ToggleCommand implements Command {
 		this.commandService.hudModel.toggles.next(newStates);
 	}
 }
+
+// export class OutgoingToggleCommand implements OutgoingCommand {
+//
+// 	constructor(private commandMessage: any, private commandType: string, private fields: { [name: string]: any }) {
+// 	}
+//
+// 	createSubmessage(): void {
+// 		let payload = ​{ name: "Lights", value: true };
+//
+// 		this.commandMessage.encode(this.commandMessage.create(payload)).finish()
+// 	}
+//
+// }

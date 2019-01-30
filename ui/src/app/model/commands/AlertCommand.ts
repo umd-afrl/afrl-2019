@@ -1,7 +1,7 @@
-import {Command} from './Command';
+import {IncomingCommand} from './Command';
 import {NotifierService} from 'angular-notifier';
 
-export class AlertCommand implements Command {
+export class AlertCommand implements IncomingCommand {
 
 	readonly message: string;
 	readonly level: number;
