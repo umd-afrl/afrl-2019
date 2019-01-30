@@ -35,6 +35,13 @@ message Button {
     string name = 1;
 }
 
+message Image {
+    int32 width = 1;
+    int32 height =2;
+    bytes image_data =3;
+    int32 channel = 4;
+}
+
 message Controller {
     message AnalogAxis {
         string name = 1;
@@ -58,6 +65,7 @@ message Command {
         Toggle toggle = 4;
         Controller controller = 5;
         Button button = 6;
+        Image image = 7;
     }
 }
 

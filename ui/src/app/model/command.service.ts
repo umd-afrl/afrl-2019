@@ -60,6 +60,6 @@ export class CommandService {
 		//	throw Error(errMsg);
 
 		// Create a new message
-		this.socket.next(new MessageEvent(MessageEvent, {data: this.commandMessage.encode(this.commandMessage.create(payload)).finish()}));
+		this.socket.next(new MessageEvent("text", {data: this.commandMessage.encode(this.commandMessage.create(payload)).finish()}));
 	}
 }
