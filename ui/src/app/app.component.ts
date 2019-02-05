@@ -6,5 +6,5 @@ import {Component} from '@angular/core';
 	styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-	title = 'AFRL UDC UMD Control Panel';
+	title = 'UMD MATE Control Panel';
 }

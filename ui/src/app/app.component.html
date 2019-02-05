@@ -1,17 +1,28 @@
 <div class="container-fluid media-body" xmlns="http://www.w3.org/1999/html">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<a class="navbar-brand" href="#">
+			<img src="/assets/img/UMDuluth_logo.png" height="30px" class="mr-lg-1" alt="UMD Logo">
+			{{title}}
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+				aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarText">
+			<span class="mr-auto"></span>
+			<span class="navbar-text">Navbar text with an inline element</span>
+		</div>
+	</nav>
 	<div class="row align-items-center">
 		<div class="col-md-auto p-1">
-			<p>
-			<img src="/../../assets/img/Air_Force_Research_Laboratory.png" style="max-height: 7%; max-width: 7%">
-			<img src="/../../assets/img/UMDuluth_logo.png" style="max-height: 7%; max-width: 7%">
-			<img src="/../../assets/img/airforce.png" style="max-height: 7%; max-width: 7%">
-			</p>
-			<h3 class="p-1 text-left " style="color:black">
-				{{title}}
-			</h3>
+			<img src="/assets/img/Air_Force_Research_Laboratory.png" style="max-height: 7%; max-width: 7%"
+				 alt="AFRL Logo">
+			<img src="/assets/img/UMDuluth_logo.png" style="max-height: 7%; max-width: 7%" alt="UMD Logo">
+			<img src="/assets/img/airforce.png" style="max-height: 7%; max-width: 7%" alt="Air Force Logo">
 		</div>
 		<div class="col-5 p-1">
-		</div>11
+		</div>
+		11
 		<div class="col-md-auto p-1 m-2">
 			<app-button title="Akela" target="targettest"></app-button>
 			<app-button title="Piezometer" target="targettest"></app-button>
@@ -19,13 +30,13 @@
 			<app-button title="RF Detector" target="targettest"></app-button>
 		</div>
 		<!--<div class="col-md-auto p-1 m-2">-->
-			<!--<app-battery-gauge></app-battery-gauge>-->
+		<!--<app-battery-gauge></app-battery-gauge>-->
 		<!--</div>-->
 		<!--<div class="col-md-auto pl-3 m-2">-->
-			<!--<app-light-gauge></app-light-gauge>-->
+		<!--<app-light-gauge></app-light-gauge>-->
 		<!--</div>-->
 		<!--<div class="col-md-auto p-1 m-2">-->
-			<!--<img src="/../assets/img/leak.png" style="max-width: 100%" height="43"/>-->
+		<!--<img src="/../assets/img/leak.png" style="max-width: 100%" height="43"/>-->
 		<!--</div>-->
 	</div>
 	<div class="row p-1">
@@ -34,15 +45,15 @@
 		</div>
 		<div class="col-sm-2">
 			<!--<div class="col">-->
-				<!--<app-switches></app-switches>-->
+			<!--<app-switches></app-switches>-->
 			<!--</div>-->
 			<!--<div class="col m-1">-->
-				<!--<app-light-slider></app-light-slider>-->
+			<!--<app-light-slider></app-light-slider>-->
 			<!--</div>-->
 			<!--<div class="col m-1">-->
-				<!--<app-thruster-gauge></app-thruster-gauge>-->
-				<!--<app-temp-gauge></app-temp-gauge>-->
-				<!--<app-pressure-gauge></app-pressure-gauge>-->
+			<!--<app-thruster-gauge></app-thruster-gauge>-->
+			<!--<app-temp-gauge></app-temp-gauge>-->
+			<!--<app-pressure-gauge></app-pressure-gauge>-->
 			<!--</div>-->
 		</div>
 	</div>
