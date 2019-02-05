@@ -79,7 +79,7 @@ def main():
         await runner.setup()
         site = web.TCPSite(runner, '127.0.0.1', 8080)
         await site.start()
-        print('Site avaliable at http://' + site._host + ':' + str(site._port))
+        print('Site available at http://' + site.__getattribute__('_host') + ':' + str(site.__getattribute__('_port')))
         try:
             avmu = AvmuCapture.AvmuCapture()
             await avmu.initialize()
