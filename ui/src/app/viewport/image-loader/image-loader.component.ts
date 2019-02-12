@@ -6,8 +6,7 @@ import {Component, Input, OnInit} from '@angular/core';
 	styleUrls: ['./image-loader.component.css']
 })
 export class ImageLoaderComponent implements OnInit {
-
-	dynamicImg ="/../../../../../../Desktop/Figure_1.png";
+	dynamicImg ="/../../assets/UMDlogo1.png";
 
 	//@Input() public streamURL = 'https://' + location.host + ':8082/?action=stream';
 
