@@ -2,8 +2,7 @@ import asyncio
 import os
 from pathlib import Path
 
-import commands_pb2
-from aiohttp import web, http_websocket
+from aiohttp import web
 
 import AvmuCapture
 
@@ -15,70 +14,24 @@ SERVER = web.Application()
 async def root_handler(request):
     return web.FileResponse(os.path.join(WEB_ROOT, 'index.html'))
 
-
-async def websocket_handler(request):
-    print('Websocket connection starting')
-    socket = web.WebSocketResponse()
-    await socket.prepare(request)
-    print('Websocket connection ready')
-
-    # proto = commands_pb2.Command()
-    # proto.message_time.GetCurrentTime()
-    # proto.alert.alert_text = 'Test Alert message sent from server!'
-    # proto.alert.alert_level = proto.alert.SUCCESS
-    # await socket.send_bytes(proto.SerializeToString())
-    # print('websocket alert message sent')
-    #
-    # await asyncio.sleep(5)
-    #
-    # proto = commands_pb2.Command()
-    # proto.message_time.GetCurrentTime()
-    # proto.toggle.name = 'Lights'
-    # proto.toggle.value = True
-    # await socket.send_bytes(proto.SerializeToString())
-    # print('websocket toggle message sent')
-
-    # ToDo knows to run target method given by button
-    async for msg in socket:
-        print(msg.type)
-        if msg.type == http_websocket.WSMsgType.TEXT:
-            print('websocket text message received: ' + msg.data)
-            if msg.data == 'close':
-                await socket.close()
-            else:
-                proto = commands_pb2.Command()
-                decoded = proto.ParseFromString(msg.data)
-                print('websocket commandMessage received: ' + decoded)
-        elif msg.type == http_websocket.WSMsgType.ERROR:
-            print('ws connection closed with exception %s' %
-                  socket.exception())
-
-    print('websocket connection closed')
-
-    return socket
-
-
-# ToDo add test target method
+async def camera_handler(request):
+    return web.Response(body=, content_type='image/png')
 
 async def on_shutdown(app):
-    # close peer connections
-    for socket in set(app['websockets']):
-        await socket.close()
 
 
 def main():
-    # Kick off the web/ws server
+    # Kick off the web server
     SERVER.on_shutdown.append(on_shutdown)
     SERVER.router.add_get('/', root_handler)
-    SERVER.router.add_get('/ws', websocket_handler)
+    SERVER.router.add_get('/snakecam', camera_handler)
     SERVER.router.add_static(prefix='/', path=WEB_ROOT)
 
     async def start():
         global runner, site, avmu
         runner = web.AppRunner(SERVER)
         await runner.setup()
-        site = web.TCPSite(runner, '192.168.1.10', 8080)
-        # '127.0.0.1'
+        site = web.TCPSite(runner, '127.0.0.1', 8080)
         await site.start()
         print('Site available at http://' + site.__getattribute__('_host') + ':' + str(site.__getattribute__('_port')))
         try:
@@ -86,9 +39,6 @@ def main():
             await avmu.initialize()
         except RuntimeError:
             print('WARNING: Failed to initialize AVMU.')
-        # site2 = web.TCPSite(runner, '169.254.202.121', 8080)
-        # await site2.start()
-
 
     async def end():
         await SERVER.shutdown()
