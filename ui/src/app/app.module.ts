@@ -4,6 +4,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule} from '@angular/forms';
 import {Ng5SliderModule} from 'ng5-slider';
 import {NgxGaugeModule} from 'ngx-gauge';
+import { HttpClientModule } from '@angular/common/http';
 
 import {AppComponent} from './app.component';
 import {SwitchesComponent} from './switches/switches.component';
@@ -80,6 +81,7 @@ const customNotifierOptions: NotifierOptions = {
 	],
 	imports: [
 		BrowserModule,
+		HttpClientModule,
 		FormsModule,
 		NgbModule,
 		ViewportModule,
@@ -96,5 +98,4 @@ const customNotifierOptions: NotifierOptions = {
 		RadialGaugeComponent,
 	]
 })
-export class AppModule {
-}
+export class AppModule {}

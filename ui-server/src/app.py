@@ -77,7 +77,7 @@ def main():
         global runner, site, avmu
         runner = web.AppRunner(SERVER)
         await runner.setup()
-        site = web.TCPSite(runner, '192.168.1.10', 8080)
+        site = web.TCPSite(runner, '192.168.1.2', 8080)
         # '127.0.0.1'
         await site.start()
         print('Site available at http://' + site.__getattribute__('_host') + ':' + str(site.__getattribute__('_port')))
@@ -86,7 +86,7 @@ def main():
             await avmu.initialize()
         except RuntimeError:
             print('WARNING: Failed to initialize AVMU.')
-        # site2 = web.TCPSite(runner, '169.254.202.121', 8080)
+        # site2 = web.TCPSite(runner, '0.0.0.0', 8080)
         # await site2.start()
 
 
