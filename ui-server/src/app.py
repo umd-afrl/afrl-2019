@@ -59,7 +59,6 @@ async def websocket_handler(request):
 
 
 # ToDo add test target method
-
 async def on_shutdown(app):
     # close peer connections
     for socket in set(app['websockets']):

@@ -1,11 +1,11 @@
 from threading import Thread, Lock
 
-import colorcet
-import holoviews as hv
+#import colorcet
+#import holoviews as hv
 import numpy as np
-import scipy.signal.windows
-from holoviews import Dimension
-from holoviews.streams import Pipe
+#import scipy.signal.windows
+#from holoviews import Dimension
+#from holoviews.streams import Pipe
 
 import avmu
 
