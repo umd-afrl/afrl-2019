@@ -1,19 +1,21 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import 'rxjs/add/operator/map';
+import { HttpClient} from "@angular/common/http";
+//import { MyDataModel } from "./my-data-model";
+import { Observable } from "rxjs";
+import 'rxjs/Rx';
+
+@Injectable({
+	providedIn: 'root'
+})
 
 @Injectable()
-// {
-//   providedIn: 'root'
-// }
 export class MicrowaveService {
-baseUrl:string = "http://192.168.1.8"
-//   constructor(private httpClient : HttpClient, private messageService: MessageService) {}
-//
-//   /** GET from the server */
-// getHeroes (): Observable<Hero[]>
-//   {
-//   	return this.http.get(this.baseURL)
-//   }
+  private url = 'http://192.168.1.8'; // full uri of the service to consume here
 
+  constructor(private http: HttpClient) { }
+
+  get(): Observable<number>{
+    return this.http
+      .get<number>(this.url);
+  }
 }

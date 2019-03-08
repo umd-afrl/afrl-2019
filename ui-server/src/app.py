@@ -4,12 +4,26 @@ from pathlib import Path
 
 import commands_pb2
 from aiohttp import web, http_websocket
-
+import aiohttp_cors
 import AvmuCapture
 
 WEB_ROOT = Path(__file__).parents[2] / 'ui/dist/controlpanel/'
 SERVER = web.Application()
 
+cors = aiohttp_cors.setup(SERVER)
+
+resource = cors.add(SERVER.router.add_resource("/hello"))
+# route = cors.add(
+#     resource.add_route("GET", handler), {
+#         "http://client.example.org": aiohttp_cors.ResourceOptions(
+#             allow_credentials=True,
+#             expose_headers=("X-Custom-Server-Header",),
+#             allow_headers=("X-Requested-With", "Content-Type"),
+#             max_age=3600,
+#         )
+#     })
+
+#assert route is not None
 
 # Serve index.html when '/' is requested
 async def root_handler(request):
