@@ -1,3 +1,8 @@
-<p>
-	{{data}}
-</p>
+<jqxChart #myChart
+		  [width]="getWidth()" [height]="500"
+		  [title]="''" [enableAxisTextAnimation]="true"
+		  [description]="''" [animationDuration]="10"
+		  [showLegend]="false" [enableAnimations]="false" [padding]="padding"
+		  [titlePadding]="titlePadding" [source]="data" [xAxis]="xAxis"
+		  [valueAxis]="valueAxis" [seriesGroups]="seriesGroups" [colorScheme]="'scheme01'">
+</jqxChart>

@@ -1,11 +1,8 @@
 from threading import Thread, Lock
 
-#import colorcet
-#import holoviews as hv
 import numpy as np
-#import scipy.signal.windows
-#from holoviews import Dimension
-#from holoviews.streams import Pipe
+import scipy.signal.windows
+from holoviews.streams import Pipe
 
 import avmu
 
@@ -96,18 +93,6 @@ class AvmuCapture:
                 self.device.haltAsync()
                 self.device.stop()
 
-    def generate_image(self, data=None):
-        plot = hv.Image(data[0],
-                        bounds=(np.min(self.axis), 0, np.max(self.axis), 1),
-                        kdims=[Dimension('Distance'), Dimension('y')],
-                        vdims=Dimension('z', range=(0, 3))
-                        ).opts(cmap=colorcet.rainbow,
-                               colorbar=True) * hv.Scatter(data[1]).opts(marker='o',
-                                                                         size=15,
-                                                                         color='black',
-                                                                         tools=['hover'])
-        return
-
     def detect_peaks(self, x, num_train, num_guard, rate_fa):
         num_cells = x.size
         num_train_half = round(num_train / 2)
@@ -142,6 +127,4 @@ def coherent_change_detection(data, previous):
 
 def start_threads(self):
     capture_thread = Thread(target=self.capture)
-    image_generation_thread = Thread(target=self.generate_image)
     capture_thread.start()
-    image_generation_thread.start()

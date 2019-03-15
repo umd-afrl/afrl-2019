@@ -1,46 +1,105 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {jqxChartComponent} from 'jqwidgets-scripts';
 import {MicrowaveService} from '../microwave.service';
-//import { Observable } from "rxjs";
-import { TimerObservable } from "rxjs/observable/TimerObservable";
-import 'rxjs/add/operator/takeWhile';
 
 @Component({
-  selector: 'app-microwave',
-  templateUrl: './microwave.component.html',
-  styleUrls: ['./microwave.component.css']
+	selector: 'app-microwave',
+	templateUrl: './microwave.component.html',
+	styleUrls: ['./microwave.component.css']
 })
+export class MicrowaveComponent implements OnInit, AfterViewInit {
+	@ViewChild('myChart') myChart: jqxChartComponent;
 
-export class MicrowaveComponent implements OnInit, OnDestroy {
-  private data: number;
-  private display: boolean; // whether to display info in the component
-                            // use *ngIf="display" in your html to take
-                            // advantage of this
+	constructor(private microwaveService: MicrowaveService) {
+	}
 
-  private alive: boolean; // used to unsubscribe from the TimerObservable
-                          // when OnDestroy is called.
-  private interval: number;
+	ngOnInit() {
+		this.generateChartData();
+		jqx.credits = '12F129D4-0E1B-44B8-9BBB-BB4CF78CC6BA'; // Hide watermark on chart
+	}
 
-  constructor(private microwaveService: MicrowaveService) {
-    this.display = false;
-    this.alive = true;
-    this.interval = 100;
-  }
+	ngAfterViewInit(): void {
+		this.microwaveService.get().subscribe((newData) => {
+			let data = this.myChart.source();
+			if (data.length >= 60) {
+				data.splice(0, 1);
+			}
+			let timestamp = new Date();
+			timestamp.setSeconds(timestamp.getSeconds());
+			timestamp.setMilliseconds(0);
+			data.push({timestamp: timestamp, value: newData});
+			this.myChart.update();
+		});
+	}
 
-  ngOnInit() {
-    TimerObservable.create(0, this.interval)
-      .takeWhile(() => this.alive)
-      .subscribe(() => {
-        this.microwaveService.get()
-          .subscribe((data) => {
-            this.data = data;
-            if(!this.display){
-              this.display = true;
-            }
-          });
-      });
-  }
+	data: any[] = [];
+	padding: any = {left: 10, top: 10, right: 10, bottom: 10};
+	titlePadding: any = {left: 0, top: 0, right: 0, bottom: 10};
 
-  ngOnDestroy(){
-    this.alive = false; // switches your TimerObservable off
-  }
+	getWidth(): any {
+		if (document.body.offsetWidth < 850) {
+			return '90%';
+		}
+
+		return 850;
+	}
+
+	xAxis: any =
+		{
+			dataField: 'timestamp',
+			type: 'date',
+			baseUnit: 'second',
+			unitInterval: 5,
+			formatFunction: (value: any) => {
+				return jqx.dataFormat.formatdate(value, 'hh:mm:ss', 'en-us');
+			},
+			gridLines: {step: 2},
+			valuesOnTicks: true,
+			labels: {angle: -45, offset: {x: -17, y: 0}}
+		};
+	valueAxis: any =
+		{
+			minValue: -.1,
+			maxValue: 1.1,
+			title: {text: ''},
+			labels: {horizontalAlignment: 'right'}
+		};
+	seriesGroups: any[] =
+		[
+			{
+				type: 'line',
+				columnsGapPercent: 50,
+				alignEndPointsWithIntervals: true,
+				valueAxis:
+					{
+						minValue: -.1,
+						maxValue: 1.1,
+						title: {text: ''}
+					},
+				series: [
+					{
+						dataField: 'value',
+						displayText: 'value',
+						opacity: 1,
+						lineWidth: 2,
+						symbolType: 'circle',
+						fillColorSymbolSelected: 'white',
+						symbolSize: 4
+					}
+				]
+			}
+		];
+
+	generateChartData = () => {
+		let timestamp = new Date();
+		for (let i = 0; i < 60; i++) {
+			timestamp.setMilliseconds(0);
+			timestamp.setSeconds(timestamp.getSeconds() - 1);
+			this.data.push({
+				timestamp: new Date(timestamp.valueOf()),
+				value: 0
+			});
+		}
+		this.data = this.data.reverse();
+	}
 }
