@@ -2,8 +2,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule} from '@angular/forms';
-import {Ng5SliderModule} from 'ng5-slider';
-import {NgxGaugeModule} from 'ngx-gauge';
 import {HttpClientModule} from '@angular/common/http';
 
 import {AppComponent} from './app.component';
@@ -70,8 +68,6 @@ const customNotifierOptions: NotifierOptions = {
 		HttpClientModule,
 		FormsModule,
 		NgbModule,
-		Ng5SliderModule,
-		NgxGaugeModule,
 		NotifierModule.withConfig(customNotifierOptions)
 	],
 	providers: [WebsocketService, CommandService],
