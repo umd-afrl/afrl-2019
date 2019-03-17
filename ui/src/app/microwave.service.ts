@@ -1,19 +1,35 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {WebsocketService} from "./websocket.service";
+import {Subject} from "rxjs/index";
+import 'rxjs/add/operator/map';
+
+export interface Message {
+  message: string;
+}
+
+const wsUrl = 'ws://192.168.1.8/';
+
+export interface MovementData {
+  movement: number;
+  time: number;
+}
 
 @Injectable({
 	providedIn: 'root'
 })
-
-@Injectable()
 export class MicrowaveService {
-	private url = 'http://192.168.1.8'; // full uri of the service to consume here
+	public movementData: Subject<MovementData>;
 
-	constructor(private http: HttpClient) {
-	}
-
-	get(): Observable<number> {
-		return this.http.get<number>(this.url);
+	constructor(websocket: WebsocketService) {
+		this.movementData = <Subject<MovementData>>websocket.connect(wsUrl).map(
+			(response: MessageEvent): MovementData => {
+				let data = parseInt(response.data);
+				return {
+					movement: data,
+					time: new Date().getTime()
+				}
+			}
+		)
 	}
 }
+

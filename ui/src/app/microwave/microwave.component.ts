@@ -11,6 +11,7 @@ export class MicrowaveComponent implements OnInit, AfterViewInit {
 	@ViewChild('myChart') myChart: jqxChartComponent;
 
 	constructor(private microwaveService: MicrowaveService) {
+		this.index = 0;
 	}
 
 	ngOnInit() {
@@ -19,19 +20,23 @@ export class MicrowaveComponent implements OnInit, AfterViewInit {
 	}
 
 	ngAfterViewInit(): void {
-		this.microwaveService.get().subscribe((newData) => {
+		this.microwaveService.movementData.subscribe((newData) => {
+			this.microwaveService.movementData.next(newData);
 			let data = this.myChart.source();
-			if (data.length >= 60) {
-				data.splice(0, 1);
+			if(!isNaN(newData.movement)) {
+				if (data.length >= 60) {
+					data.pop();
+				}
+				data.unshift({timestamp: this.index, value: newData.movement});
+				this.index += 1;
+				console.log(data);
+				this.myChart.refresh();
+				this.myChart.update();
 			}
-			let timestamp = new Date();
-			timestamp.setSeconds(timestamp.getSeconds());
-			timestamp.setMilliseconds(0);
-			data.push({timestamp: timestamp, value: newData});
-			this.myChart.update();
 		});
-	}
 
+	}
+	index: number;
 	data: any[] = [];
 	padding: any = {left: 10, top: 10, right: 10, bottom: 10};
 	titlePadding: any = {left: 0, top: 0, right: 0, bottom: 10};
@@ -47,11 +52,11 @@ export class MicrowaveComponent implements OnInit, AfterViewInit {
 	xAxis: any =
 		{
 			dataField: 'timestamp',
-			type: 'date',
-			baseUnit: 'second',
+			type: 'number',
+			baseUnit: 'milisecond',
 			unitInterval: 5,
 			formatFunction: (value: any) => {
-				return jqx.dataFormat.formatdate(value, 'hh:mm:ss', 'en-us');
+				return value;
 			},
 			gridLines: {step: 2},
 			valuesOnTicks: true,
@@ -91,14 +96,12 @@ export class MicrowaveComponent implements OnInit, AfterViewInit {
 		];
 
 	generateChartData = () => {
-		let timestamp = new Date();
 		for (let i = 0; i < 60; i++) {
-			timestamp.setMilliseconds(0);
-			timestamp.setSeconds(timestamp.getSeconds() - 1);
 			this.data.push({
-				timestamp: new Date(timestamp.valueOf()),
+				timestamp: this.index,
 				value: 0
 			});
+			this.index += 1;
 		}
 		this.data = this.data.reverse();
 	}
