@@ -42,11 +42,11 @@ export class MicrowaveComponent implements OnInit, AfterViewInit {
 	titlePadding: any = {left: 0, top: 0, right: 0, bottom: 10};
 
 	getWidth(): any {
-		if (document.body.offsetWidth < 850) {
+		if (document.body.offsetWidth < 750) {
 			return '90%';
 		}
 
-		return 850;
+		return 750;
 	}
 
 	xAxis: any =

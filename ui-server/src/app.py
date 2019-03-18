@@ -5,7 +5,7 @@ from pathlib import Path
 import commands_pb2
 from aiohttp import web, http_websocket
 import aiohttp_cors
-import AvmuCapture
+# import AvmuCapture
 
 WEB_ROOT = Path(__file__).parents[2] / 'ui/dist/controlpanel/'
 SERVER = web.Application()
@@ -90,15 +90,15 @@ def main():
         global runner, site, avmu
         runner = web.AppRunner(SERVER)
         await runner.setup()
-        site = web.TCPSite(runner, '192.168.1.10', 8080)
+        site = web.TCPSite(runner, '192.168.1.2', 8080)
         # '127.0.0.1'
         await site.start()
         print('Site available at http://' + site.__getattribute__('_host') + ':' + str(site.__getattribute__('_port')))
-        try:
-            avmu = AvmuCapture.AvmuCapture()
-            await avmu.initialize()
-        except RuntimeError:
-            print('WARNING: Failed to initialize AVMU.')
+        # try:
+        #     avmu = AvmuCapture.AvmuCapture()
+        #     await avmu.initialize()
+        # except RuntimeError:
+        #     print('WARNING: Failed to initialize AVMU.')
         # site2 = web.TCPSite(runner, '0.0.0.0', 8080)
         # await site2.start()
 

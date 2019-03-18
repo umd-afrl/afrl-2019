@@ -30,7 +30,7 @@
     "jqwidgets-framework": "^7.1.0",
     "jqwidgets-scripts": "^7.1.0",
     "protobufjs": "~6.8.8",
-    "rxjs": "~6.4.0",
+    "rxjs": "^6.4.0",
     "rxjs-compat": "^6.4.0",
     "zone.js": "^0.8.29"
   },
@@ -39,9 +39,9 @@
     "@angular/cli": "^7.3.6",
     "@angular/compiler-cli": "^7.2.9",
     "@angular/language-service": "^7.2.9",
-    "@types/jasmine": "^3.3.9",
+    "@types/jasmine": "^3.3.10",
     "@types/jasminewd2": "^2.0.6",
-    "@types/node": "^10.12.27",
+    "@types/node": "^10.14.1",
     "codelyzer": "~4.5.0",
     "jasmine-core": "~3.3.0",
     "jasmine-spec-reporter": "~4.2.1",
@@ -52,7 +52,7 @@
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
     "protractor": "~5.4.2",
-    "ts-node": "^8.0.2",
+    "ts-node": "^8.0.3",
     "tslint": "~5.12.1",
     "typescript": "^3.2.4"
   }

@@ -1,9 +1,5 @@
 import {Injectable} from '@angular/core';
 import {Observable, Observer, Subject} from 'rxjs';
-
-@Injectable({
-	providedIn: 'root'
-})
 export class WebsocketService {
 	constructor() {
 	}
