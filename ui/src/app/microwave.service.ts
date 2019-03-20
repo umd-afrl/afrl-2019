@@ -1,17 +1,13 @@
 import {Injectable} from '@angular/core';
-import {WebsocketService} from "./websocket.service";
-import {Subject} from "rxjs/index";
+import {WebsocketService} from './websocket.service';
+import {Subject} from 'rxjs';
 import 'rxjs/add/operator/map';
 
-export interface Message {
-  message: string;
-}
-
-const wsUrl = 'ws://192.168.1.8/';
+const wsUrl = 'ws://192.168.1.9:/';
 
 export interface MovementData {
-  movement: number;
-  time: number;
+	movement: number;
+	time: number;
 }
 
 @Injectable({
@@ -20,7 +16,7 @@ export interface MovementData {
 export class MicrowaveService {
 	public movementData: Subject<MovementData>;
 
-	constructor(websocket: WebsocketService) {
+	constructor(private websocket: WebsocketService) {
 		this.movementData = <Subject<MovementData>>websocket.connect(wsUrl).map(
 			(response: MessageEvent): MovementData => {
 				let data = parseInt(response.data);
@@ -29,7 +25,7 @@ export class MicrowaveService {
 					time: new Date().getTime()
 				}
 			}
-		)
+		);
 	}
 }
 

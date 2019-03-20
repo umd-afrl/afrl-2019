@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {jqxChartComponent} from 'jqwidgets-scripts';
-import {MicrowaveService} from '../microwave.service';
+import {MicrowaveService, MovementData} from '../microwave.service';
 
 @Component({
 	selector: 'app-microwave',
@@ -19,25 +19,22 @@ export class MicrowaveComponent implements OnInit, AfterViewInit {
 		jqx.credits = '12F129D4-0E1B-44B8-9BBB-BB4CF78CC6BA'; // Hide watermark on chart
 	}
 
-	ngAfterViewInit(): void {
+	ngAfterViewInit() {
 		this.microwaveService.movementData.subscribe((newData) => {
 			this.microwaveService.movementData.next(newData);
-			let data = this.myChart.source();
-			if(!isNaN(newData.movement)) {
-				if (data.length >= 60) {
-					data.pop();
+			if (!isNaN(newData.movement)) {
+				if (this.data.length >= 60) {
+					this.data.pop();
 				}
-				data.unshift({timestamp: this.index, value: newData.movement});
+				this.data.unshift({time: this.index, movement: newData.movement});
 				this.index += 1;
-				console.log(data);
-				this.myChart.refresh();
-				this.myChart.update();
 			}
+			this.myChart.update();
 		});
-
 	}
+
 	index: number;
-	data: any[] = [];
+	data: MovementData[] = [];
 	padding: any = {left: 10, top: 10, right: 10, bottom: 10};
 	titlePadding: any = {left: 0, top: 0, right: 0, bottom: 10};
 
@@ -51,7 +48,7 @@ export class MicrowaveComponent implements OnInit, AfterViewInit {
 
 	xAxis: any =
 		{
-			dataField: 'timestamp',
+			dataField: 'time',
 			type: 'number',
 			baseUnit: 'milisecond',
 			unitInterval: 5,
@@ -83,7 +80,7 @@ export class MicrowaveComponent implements OnInit, AfterViewInit {
 					},
 				series: [
 					{
-						dataField: 'value',
+						dataField: 'movement',
 						displayText: 'value',
 						opacity: 1,
 						lineWidth: 2,
@@ -95,11 +92,11 @@ export class MicrowaveComponent implements OnInit, AfterViewInit {
 			}
 		];
 
-	generateChartData = () => {
+	generateChartData() {
 		for (let i = 0; i < 60; i++) {
 			this.data.push({
-				timestamp: this.index,
-				value: 0
+				time: this.index,
+				movement: 0
 			});
 			this.index += 1;
 		}
