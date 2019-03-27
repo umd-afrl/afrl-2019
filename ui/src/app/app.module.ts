@@ -6,13 +6,12 @@ import {HttpClientModule} from '@angular/common/http';
 
 import {AppComponent} from './app.component';
 import {SwitchesComponent} from './switches/switches.component';
-import {WebsocketService} from './websocket.service';
-import {CommandService} from './model/command.service';
 import {NotifierModule, NotifierOptions} from 'angular-notifier';
 import {ButtonComponent} from './button/button.component';
 import {MicrowaveComponent} from './microwave/microwave.component';
 import {jqxChartComponent} from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxchart';
 import {VideoComponent} from './video/video.component';
+import {AvmuComponent} from './avmu/avmu.component';
 
 
 const customNotifierOptions: NotifierOptions = {
@@ -63,7 +62,9 @@ const customNotifierOptions: NotifierOptions = {
 		ButtonComponent,
 		MicrowaveComponent,
 		jqxChartComponent,
-		VideoComponent
+		VideoComponent,
+		AvmuComponent
+
 	],
 	imports: [
 		BrowserModule,
@@ -72,7 +73,7 @@ const customNotifierOptions: NotifierOptions = {
 		NgbModule,
 		NotifierModule.withConfig(customNotifierOptions)
 	],
-	providers: [WebsocketService, CommandService],
+	providers: [],
 	bootstrap: [AppComponent],
 	exports: [
 		AppComponent,

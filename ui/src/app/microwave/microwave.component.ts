@@ -1,11 +1,13 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {jqxChartComponent} from 'jqwidgets-scripts';
 import {MicrowaveService, MovementData} from '../microwave.service';
+import {WebsocketService} from '../websocket.service';
 
 @Component({
 	selector: 'app-microwave',
 	templateUrl: './microwave.component.html',
-	styleUrls: ['./microwave.component.css']
+	styleUrls: ['./microwave.component.css'],
+	providers: [MicrowaveService, WebsocketService]
 })
 export class MicrowaveComponent implements OnInit, AfterViewInit {
 	@ViewChild('myChart') myChart: jqxChartComponent;
