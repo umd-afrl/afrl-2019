@@ -90,7 +90,7 @@ def main():
         global runner, site, avmu
         runner = web.AppRunner(SERVER)
         await runner.setup()
-        site = web.TCPSite(runner, '192.168.1.2', 8080)
+        site = web.TCPSite(runner, '192.168.1.3', 8080)
         # '127.0.0.1'
         await site.start()
         print('Site available at http://' + site.__getattribute__('_host') + ':' + str(site.__getattribute__('_port')))

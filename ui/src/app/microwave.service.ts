@@ -3,7 +3,7 @@ import {WebsocketService} from './websocket.service';
 import {Subject} from 'rxjs';
 import 'rxjs/add/operator/map';
 
-const wsUrl = 'ws://192.168.1.9:/';
+const wsUrl = 'ws://192.168.1.12:/';
 
 export interface MovementData {
 	movement: number;

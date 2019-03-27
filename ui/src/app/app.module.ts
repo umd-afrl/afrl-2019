@@ -11,7 +11,8 @@ import {CommandService} from './model/command.service';
 import {NotifierModule, NotifierOptions} from 'angular-notifier';
 import {ButtonComponent} from './button/button.component';
 import {MicrowaveComponent} from './microwave/microwave.component';
-import { jqxChartComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxchart';
+import {jqxChartComponent} from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxchart';
+import {VideoComponent} from './video/video.component';
 
 
 const customNotifierOptions: NotifierOptions = {
@@ -61,7 +62,8 @@ const customNotifierOptions: NotifierOptions = {
 		SwitchesComponent,
 		ButtonComponent,
 		MicrowaveComponent,
-		jqxChartComponent
+		jqxChartComponent,
+		VideoComponent
 	],
 	imports: [
 		BrowserModule,
