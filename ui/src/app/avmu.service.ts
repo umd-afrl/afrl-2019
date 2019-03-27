@@ -3,28 +3,26 @@ import {WebsocketService} from './websocket.service';
 import {Subject} from 'rxjs';
 import 'rxjs/add/operator/map';
 
-const wsUrl = 'ws://192.168.1.12:/';
+const wsUrl = 'ws://192.168.1.7:8008/';
 
-export interface MovementData {
-	movement: number;
-	time: number;
+export interface RadarData {
+	magnitude: number[];
+	peaks: number[];
 }
 
 @Injectable()
-export class MicrowaveService {
+export class AvmuService {
 	socket: Subject<MessageEvent>;
-	public movementData = new Subject<MovementData>();
+	public radarData = new Subject<RadarData>();
 
 	constructor(private websocket: WebsocketService) {
 		this.socket = websocket.connect(wsUrl);
 		this.socket.subscribe(
 			(response: MessageEvent) => {
-				let data = parseInt(response.data);
-				this.movementData.next({
-					movement: data,
-					time: new Date().getTime()
-				});
-			});
+				let data = JSON.parse(response.data);
+				console.log('avmu ws data', data);
+				this.radarData.next({magnitude: data[0][0], peaks: data[1]});
+			}
+		);
 	}
 }
-
