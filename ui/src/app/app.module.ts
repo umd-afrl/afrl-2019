@@ -11,6 +11,8 @@ import {ButtonComponent} from './button/button.component';
 import {MicrowaveComponent} from './microwave/microwave.component';
 import {jqxChartComponent} from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxchart';
 import {AvmuComponent} from './avmu/avmu.component';
+import { WoflhoundComponent } from './wolfhound/woflhound/woflhound.component';
+import { WolfhoundComponent } from './wolfhound/wolfhound.component';
 
 
 const customNotifierOptions: NotifierOptions = {
@@ -61,7 +63,9 @@ const customNotifierOptions: NotifierOptions = {
 		ButtonComponent,
 		MicrowaveComponent,
 		jqxChartComponent,
-		AvmuComponent
+		AvmuComponent,
+		WoflhoundComponent,
+		WolfhoundComponent
 	],
 	imports: [
 		BrowserModule,
