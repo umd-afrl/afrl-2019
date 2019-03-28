@@ -37,15 +37,15 @@ export class MicrowaveComponent implements OnInit, AfterViewInit {
 
 	index: number;
 	data: MovementData[] = [];
-	padding: any = {left: 10, top: 10, right: 10, bottom: 10};
-	titlePadding: any = {left: 0, top: 0, right: 0, bottom: 10};
+	// padding: any = {left: 10, top: 10, right: 10, bottom: 10};
+	// titlePadding: any = {left: 0, top: 0, right: 0, bottom: 10};
 
 	getWidth(): any {
 		// if (document.body.offsetWidth < 500) {
 		// 	return '90%';
 		// }
 
-		return 600;
+		return 500;
 	}
 
 	xAxis: any =
@@ -78,12 +78,12 @@ export class MicrowaveComponent implements OnInit, AfterViewInit {
 					{
 						minValue: -.1,
 						maxValue: 1.1,
-						title: {text: ''}
+						// title: {text: ''}
 					},
 				series: [
 					{
 						dataField: 'movement',
-						displayText: 'value',
+						displayText: 'Motion = 1 No Motion = 0',
 						opacity: 1,
 						lineWidth: 2,
 						symbolType: 'circle',
