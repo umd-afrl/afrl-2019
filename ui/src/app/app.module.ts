@@ -16,6 +16,7 @@ import { AmberComponent } from './amber/amber.component';
 import { RubbleComponent } from './rubble/rubble.component';
 import { AreamapComponent } from './areamap/areamap.component';
 import { CarComponent } from './car/car.component';
+import { WolfhoundComponent } from './wolfhound/wolfhound.component';
 
 
 const customNotifierOptions: NotifierOptions = {
@@ -71,7 +72,8 @@ const customNotifierOptions: NotifierOptions = {
 		AmberComponent,
 		RubbleComponent,
 		AreamapComponent,
-		CarComponent
+		CarComponent,
+		WolfhoundComponent
 
 	],
 	imports: [

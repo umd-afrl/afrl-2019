@@ -3,10 +3,11 @@ import {WebsocketService} from './websocket.service';
 import {Subject} from 'rxjs';
 import 'rxjs/add/operator/map';
 
-const wsUrl = 'ws://192.168.1.13:/';
+const wsUrl = 'ws://192.168.1.6:8090/';
 
 export interface WolfhoundData {
-	signalStrength: number;
+	frequency: number;
+	signal_strength: number;
 }
 
 @Injectable( )
@@ -18,10 +19,9 @@ export class WolfhoundService {
 		this.socket = websocket.connect(wsUrl);
 		this.socket.subscribe(
 			(response: MessageEvent) => {
-				let input = parseInt(response.data);
-				this.wolfhoundData.next({
-					signalStrength: input
-				});
+				console.log(response.data);
+				let newData: WolfhoundData = JSON.parse(response.data)
+				this.wolfhoundData.next(newData);
 			}
 		);
 	}
