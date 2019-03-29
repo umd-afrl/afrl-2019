@@ -2,6 +2,7 @@ import {AfterViewInit, Component, ElementRef, Input, ViewChild} from '@angular/c
 import {AvmuService, RadarData} from '../avmu.service';
 import * as d3 from 'd3';
 import {WebsocketService} from '../websocket.service';
+import {timer} from 'rxjs';
 
 @Component({
 	selector: 'app-avmu',

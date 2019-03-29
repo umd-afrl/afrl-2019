@@ -20,7 +20,6 @@ export class AvmuService {
 		this.socket.subscribe(
 			(response: MessageEvent) => {
 				let data = JSON.parse(response.data);
-				console.log('avmu ws data', data);
 				this.radarData.next({magnitude: data[0][0], peaks: data[1]});
 			}
 		);
