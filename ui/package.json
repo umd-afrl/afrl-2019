@@ -31,7 +31,6 @@
     "jquery": "^3.3.1",
     "jqwidgets-framework": "^7.1.0",
     "jqwidgets-scripts": "^7.1.0",
-    "pixi.js": "^4.8.7",
     "protobufjs": "~6.8.8",
     "rxjs": "^6.4.0",
     "rxjs-compat": "^6.4.0",
