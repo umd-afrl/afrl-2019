@@ -25,7 +25,7 @@ export class MicrowaveComponent implements OnInit, AfterViewInit {
 		this.microwaveService.movementData.subscribe((newData) => {
 			this.microwaveService.movementData.next(newData);
 			if (!isNaN(newData.movement)) {
-				if (this.data.length >= 60) {
+				if (this.data.length >= 50) {
 					this.data.pop();
 				}
 				this.data.unshift({time: this.index, movement: newData.movement});
@@ -37,13 +37,13 @@ export class MicrowaveComponent implements OnInit, AfterViewInit {
 
 	index: number;
 	data: MovementData[] = [];
-	padding: any = {left: 10, top: 10, right: 10, bottom: 10};
-	titlePadding: any = {left: 0, top: 0, right: 0, bottom: 10};
+	// padding: any = {left: 10, top: 10, right: 10, bottom: 10};
+	// titlePadding: any = {left: 0, top: 0, right: 0, bottom: 10};
 
 	getWidth(): any {
-		if (document.body.offsetWidth < 500) {
-			return '90%';
-		}
+		// if (document.body.offsetWidth < 500) {
+		// 	return '90%';
+		// }
 
 		return 500;
 	}
@@ -78,12 +78,12 @@ export class MicrowaveComponent implements OnInit, AfterViewInit {
 					{
 						minValue: -.1,
 						maxValue: 1.1,
-						title: {text: ''}
+						// title: {text: ''}
 					},
 				series: [
 					{
 						dataField: 'movement',
-						displayText: 'value',
+						displayText: 'Motion = 1 No Motion = 0',
 						opacity: 1,
 						lineWidth: 2,
 						symbolType: 'circle',

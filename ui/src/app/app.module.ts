@@ -10,9 +10,12 @@ import {NotifierModule, NotifierOptions} from 'angular-notifier';
 import {ButtonComponent} from './button/button.component';
 import {MicrowaveComponent} from './microwave/microwave.component';
 import {jqxChartComponent} from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxchart';
+import {VideoComponent} from './video/video.component';
 import {AvmuComponent} from './avmu/avmu.component';
-import { WoflhoundComponent } from './wolfhound/woflhound/woflhound.component';
-import { WolfhoundComponent } from './wolfhound/wolfhound.component';
+import { AmberComponent } from './amber/amber.component';
+import { RubbleComponent } from './rubble/rubble.component';
+import { AreamapComponent } from './areamap/areamap.component';
+import { CarComponent } from './car/car.component';
 
 
 const customNotifierOptions: NotifierOptions = {
@@ -63,9 +66,13 @@ const customNotifierOptions: NotifierOptions = {
 		ButtonComponent,
 		MicrowaveComponent,
 		jqxChartComponent,
+		VideoComponent,
 		AvmuComponent,
-		WoflhoundComponent,
-		WolfhoundComponent
+		AmberComponent,
+		RubbleComponent,
+		AreamapComponent,
+		CarComponent
+
 	],
 	imports: [
 		BrowserModule,

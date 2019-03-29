@@ -1,172 +1,144 @@
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-10">
+<div class="row">
+	<div class="col-md-9.5">
 
-			<!-- ********************************************************* -->
-			<div class="tab-content flex-column container-fluid order-0" id="v-pills-tabContent"
-				 style="margin: 10px">
+		<!-- ********************************************************* -->
+		<div class="tab-content flex-column container-fluid order-0" id="v-pills-tabContent" style="margin: 10px">
 
-				<div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
-					 aria-labelledby="v-pills-home-tab">
+			<div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+				 aria-labelledby="v-pills-home-tab">
 
-					<div class="row" style="margin: 10px">
-						<div class="col-md-3, mx-auto">
-							<h3 class="text-center bg-warning">
-								AVMU Radar
-							</h3>
-							<p class="text-center">
-								Moving objects marked by dots.
-							</p>
-							<p class="text-center">
-								Feet away from Radar antennae.
-							</p>
-							<!--<img src="http://192.168.1.6:5000/akela" style="height: 200px; width: 200px"/>-->
-							<app-avmu></app-avmu>
+				<div class="row" style="margin: 10px">
+					<div class="col-auto-md-3, mx-auto">
+						<app-avmu></app-avmu>
+					</div>
+
+					<div class="col-md-9,mx-auto">
+
+						<div class="row">
+
+							<div class="col-md-12, mx-auto">
+								<app-video></app-video>
+								<p>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								</p>
+							</div>
+
+							<!--******If Radio Frequency gets added back.******-->
+							<!--<div class="col-md-6, mx-auto">-->
+
+							<!--<h3> Live Video-->
+							<!--</h3>-->
+
+							<!--<img src="http://192.168.1.6:5000/snakecam"-->
+							<!--style="height: 300px; width: 500px"/>-->
+
+							<!--</div>-->
+
+
+							<!--<div class="col-md-6, mx-auto, jumbotron hero-angle">-->
+
+							<!--<h3 class="text-center">-->
+							<!--Radio Frequency-->
+							<!--</h3>-->
+							<!--<br>-->
+							<!--<p>-->
+							<!--Cellphones Detected = <b>2</b>-->
+							<!--</p>-->
+							<!--<p>Strongest-->
+							<!--Frequency = <b>850MHz</b></p>-->
+
+							<!--</div>-->
+							<!--******@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@******-->
 
 						</div>
 
-						<div class="col-md-9,mx-auto">
-
-							<div class="row">
-
-								<div class="col-md-12, mx-auto">
-
-
-									<h3 class="bg-warning">
-										<p class="text-center"> Live Video
-										</p>
-									</h3>
-
-									<img src="http://192.168.1.4:5000/snakecam"
-										 style="height: 350px; width: 500px"/>
-									<p>
-										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									</p>
-
-								</div>
-
-								<!--******If Radio Frequency gets added back.******-->
-								<!--<div class="col-md-6, mx-auto">-->
-
-								<!--<h3> Live Video-->
-								<!--</h3>-->
-
-								<!--<img src="http://192.168.1.6:5000/snakecam"-->
-								<!--style="height: 300px; width: 500px"/>-->
-
-								<!--</div>-->
-
-
-								<!--<div class="col-md-6, mx-auto, jumbotron hero-angle">-->
-
-								<!--<h3 class="text-center">-->
-								<!--Radio Frequency-->
-								<!--</h3>-->
-								<!--<br>-->
-								<!--<p>-->
-								<!--Cellphones Detected = <b>2</b>-->
-								<!--</p>-->
-								<!--<p>Strongest-->
-								<!--Frequency = <b>850MHz</b></p>-->
-
-								<!--</div>-->
-								<!--******@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@******-->
-
+						<div class="row">
+							<div class="col-md-2.5, mx-auto">
+								<app-microwave></app-microwave>
 							</div>
-
-							<div class="row">
-								<div class="col-md-2, mx-auto">
-									<h3 class="text-center bg-warning">
-										Motion Detection
-									</h3>
-									<p>
-										Motion = 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No Motion = 0
-									</p>
-									<!--<div class="tab-content flex-column container-fluid order-0" id="v-pills-tabContent" style = "margin: 10px">-->
-									<app-microwave></app-microwave>
-									<!--<img src="http://192.168.1.4:5000/snakecam" style = "height: 275px; width: 425px"/>-->
-									<!--</div>-->
-
-									<!--<div class="tab-content flex-column container-fluid order-0" id="v-pills-tabContent" style = "margin: 10px">-->
-
-									<!--</div>-->
-									<!--<img src="microwave.service.ts" style = "height: 275px; width: 425px"/>-->
-
-
-								</div>
-							</div>
-
-
 						</div>
+
+
 					</div>
 				</div>
-				<div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
-					 aria-labelledby="v-pills-profile-tab">
-					<img src="http://192.168.1.4:5000/snakecam" style="height: 550px; width: 800px"/>
-				</div>
-				<div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
-					 aria-labelledby="v-pills-messages-tab">
-					<!--<img src="http://192.168.1.6:5000/akela" style="height: 200px; width: 200px"/>-->
-					<img src="/assets/img/Akela_Place_Holder.png"
-						 style="height: 550px; width: 100px">
-				</div>
-				<!--<div class="tab-pane fade" id="v-pills-microwave" role="tabpanel"-->
-					 <!--aria-labelledby="v-pills-microwave-tab">-->
-					<!--<div>-->
-						<!--<h3 class="bg-warning">-->
-							<!--<p class="text-center">Microwave</p>-->
-						<!--</h3>-->
-						<!--&lt;!&ndash;<app-microwave></app-microwave>&ndash;&gt;-->
-					<!--</div>-->
-				<!--</div>-->
-				<div class="tab-pane fade" id="v-pills-procedure" role="tabpanel"
-					 aria-labelledby="v-pills-procedure-tab">
-					<img src="/assets/img/procedures.png" style="height: 550px; width: 800px" class="mr-lg-1">
-				</div>
-				<div class="tab-pane fade" id="v-pills-floor" role="tabpanel"
-					 aria-labelledby="v-pills-floor-tab">
-					<img src="/assets/img/floor.JPG" class="mr-lg-1">
-				</div>
-				<div class="tab-pane fade" id="v-pills-car" role="tabpanel" aria-labelledby="v-pills-car-tab">
-					<img src="/assets/img/car.png" class="mr-lg-1">
-				</div>
 			</div>
-			<!-- ********************************************************* -->
+			<div class="tab-pane fade" id="v-pills-video" role="tabpanel"
+				 aria-labelledby="v-pills-video-tab">
+				<img src="http://192.168.1.6:5000/snakecam" style="height: 550px; width: 750px"/>
+			</div>
+			<div class="tab-pane fade" id="v-pills-radar" role="tabpanel"
+				 aria-labelledby="v-pills-radar-tab">
+				<!--<img src="http://192.168.1.6:5000/akela" style="height: 200px; width: 200px"/>-->
+				<img src="/assets/img/Akela_Place_Holder.png"
+					 style="height: 550px; width: 100px">
+			</div>
+			<!--<div class="tab-pane fade" id="v-pills-microwave" role="tabpanel"-->
+			<!--aria-labelledby="v-pills-microwave-tab">-->
+			<!--<div>-->
+			<!--<h3 class="bg-warning">-->
+			<!--<p class="text-center">Microwave</p>-->
+			<!--</h3>-->
+			<!--&lt;!&ndash;<app-microwave></app-microwave>&ndash;&gt;-->
+			<!--</div>-->
+			<!--</div>-->
+
+			<div class="tab-pane fade" id="v-pills-rf" role="tabpanel"
+				 aria-labelledby="v-pills-rf-tab">
+			</div>
+			<div class="tab-pane fade" id="v-pills-procedure" role="tabpanel"
+				 aria-labelledby="v-pills-procedure-tab">
+				<app-amber></app-amber>
+			</div>
+			<div class="tab-pane fade" id="v-pills-oprocedure" role="tabpanel"
+				 aria-labelledby="v-pills-oprocedure-tab">
+				<app-rubble></app-rubble>
+			</div>
+			<div class="tab-pane fade" id="v-pills-map" role="tabpanel"
+				 aria-labelledby="v-pills-map-tab">
+				<app-areamap></app-areamap>
+			</div>
+			<div class="tab-pane fade" id="v-pills-car" role="tabpanel" aria-labelledby="v-pills-car-tab">
+				<app-car></app-car>
+			</div>
+		</div>
+		<!-- ********************************************************* -->
 
 
+	</div>
+
+	<div class="col-md-2.5" style="margin: 10px">
+		<div class="nav flex-column  nav-pills text-left order-1 bg-dark" id="v-pills-tab" role="tablist"
+			 aria-orientation="vertical">
+			<a class="nav-link text-white" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home"
+			   role="tab"
+			   aria-controls="v-pills-home" aria-selected="true"><h5>3 Pack</h5></a>
+			<a class="nav-link text-white" id="v-pills-video-tab" data-toggle="pill" href="#v-pills-video"
+			   role="tab"
+			   aria-controls="v-pills-video" aria-selected="false"><h5>Live Video</h5></a>
+			<a class="nav-link text-white" id="v-pills-radar-tab" data-toggle="pill" href="#v-pills-radar"
+			   role="tab"
+			   aria-controls="v-pills-radar" aria-selected="false"><h5>AVMU Radar</h5></a>
+			<a class="nav-link text-white" id="v-pills-rf-tab" data-toggle="pill" href="#v-pills-rf"
+			   role="tab"
+			   aria-controls="v-pills-rf" aria-selected="true"><h5>Phone Detector</h5></a>
+			<a class="nav-link text-white" id="v-pills-procedure-tab" data-toggle="pill" href="#v-pills-procedure"
+			   role="tab"
+			   aria-controls="v-pills-procedure" aria-selected="false"><h5>Amber Procedure</h5></a>
+			<a class="nav-link text-white" id="v-pills-oprocedure-tab" data-toggle="pill" href="#v-pills-oprocedure"
+			   role="tab"
+			   aria-controls="v-pills-oprocedure" aria-selected="false"><h5>Rubble Procedure</h5></a>
+			<a class="nav-link text-white" id="v-pills-map-tab" data-toggle="pill" href="#v-pills-map"
+			   role="tab"
+			   aria-controls="v-pills-map" aria-selected="false"><h5>Area Map</h5></a>
+			<a class="nav-link text-white" id="v-pills-car-tab" data-toggle="pill" href="#v-pills-car" role="tab"
+			   aria-controls="v-pills-car" aria-selected="false"><h5>Car Schematic</h5></a>
 		</div>
 
-		<div class="col-md-2">
-			<div class="nav flex-column  nav-pills text-left order-1 bg-dark" id="v-pills-tab" role="tablist"
-				 aria-orientation="vertical">
-				<a class="nav-link text-white" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home"
-				   role="tab"
-				   aria-controls="v-pills-home" aria-selected="true"><h4>3 Pack</h4></a>
-				<a class="nav-link text-white" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile"
-				   role="tab"
-				   aria-controls="v-pills-profile" aria-selected="false"><h4>Live Video</h4></a>
-				<a class="nav-link text-white" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages"
-				   role="tab"
-				   aria-controls="v-pills-messages" aria-selected="false"><h4>AVMU Radar</h4></a>
-				<!--<a class="nav-link text-white" id="v-pills-microwave-tab" data-toggle="pill" href="#v-pills-microwave"-->
-				   <!--role="tab"-->
-				   <!--aria-controls="v-pills-microwave" aria-selected="true"><h4>Motion Detector</h4></a>-->
-				<a class="nav-link text-white" id="v-pills-procedure-tab" data-toggle="pill" href="#v-pills-procedure"
-				   role="tab"
-				   aria-controls="v-pills-procedure" aria-selected="false"><h4>Procedure</h4></a>
-				<a class="nav-link text-white" id="v-pills-floor-tab" data-toggle="pill" href="#v-pills-floor"
-				   role="tab"
-				   aria-controls="v-pills-floor" aria-selected="false"><h4>Area Map</h4></a>
-				<a class="nav-link text-white" id="v-pills-car-tab" data-toggle="pill" href="#v-pills-car" role="tab"
-				   aria-controls="v-pills-car" aria-selected="false"><h4>Car Schematic</h4></a>
-			</div>
-			<br>
-			<img src="/assets/img/UMDlogo1.png" style="height: 100px; width: 100px" class="mr-lg-1 text-center center-block"/>
-			<br>
-			<p>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			</p>
-			<img src="/assets/img/UDCLogo.jpg" style="height: 100px; width: 100px" class="mr-lg-1 text-center center-block"/>
-		</div>
-	</div>`
+		<img src="/assets/img/UMDlogo1.png" style="height: 100px; width: 100px; margin: 30px"
+			 class="mr-lg-1 text-center center-block"/>
+		<br>
+
+		<img src="/assets/img/UDCLogo.jpg" style="height: 100px; width: 100px; margin: 30px"
+			 class="mr-lg-1 text-center center-block"/>
+	</div>
 </div>
