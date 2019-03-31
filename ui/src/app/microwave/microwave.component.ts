@@ -22,17 +22,17 @@ export class MicrowaveComponent implements OnInit, AfterViewInit {
 	}
 
 	ngAfterViewInit() {
-		this.microwaveService.movementData.subscribe((newData) => {
-			this.microwaveService.movementData.next(newData);
-			if (!isNaN(newData.movement)) {
-				if (this.data.length >= 50) {
-					this.data.pop();
-				}
-				this.data.unshift({time: this.index, movement: newData.movement});
-				this.index += 1;
-			}
-			this.myChart.update();
-		});
+		// this.microwaveService.movementData.subscribe((newData) => {
+		// 	this.microwaveService.movementData.next(newData);
+		// 	if (!isNaN(newData.movement)) {
+		// 		if (this.data.length >= 50) {
+		// 			this.data.pop();
+		// 		}
+		// 		this.data.unshift({time: this.index, movement: newData.movement});
+		// 		this.index += 1;
+		// 	}
+		// 	this.myChart.update();
+		// });
 	}
 
 	index: number;
@@ -98,7 +98,7 @@ export class MicrowaveComponent implements OnInit, AfterViewInit {
 		for (let i = 0; i < 60; i++) {
 			this.data.push({
 				time: this.index,
-				movement: 0
+				movement: Math.round(Math.random() * 2 / 3)
 			});
 			this.index += 1;
 		}

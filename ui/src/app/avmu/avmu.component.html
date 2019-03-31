@@ -1,14 +1,15 @@
-<div class="container">
+<div class="container" style="position: relative">
 	<h3 class="text-center bg-warning">
-								AVMU Radar
-							</h3>
-							<p class="text-center">
-								Moving objects marked by dots.
-							</p>
-							<p class="text-center">
-								Feet away from Radar antennae.
-							</p>
-							<!--<img src="http://192.168.1.6:5000/akela" style="height: 200px; width: 200px"/>-->
-	<canvas #radarData class="img-fluid" style="width: 100%;height: 500px;"></canvas>
-	<button type="button"  class=" bg-warning text-center center-block" style="margin: 30px">TURN AVMU OFF</button>
+		AVMU Radar
+	</h3>
+	<p class="text-center">
+		Moving objects marked by dots.
+	</p>
+	<svg id="axis" style="vertical-align: top"></svg>
+	<canvas #radarData class="img-fluid" style="width: 80%;height: 2048px;"></canvas>
+	<p class="text-center">
+		Feet away from Radar antennae.
+	</p>
+
+	<button type="button" class=" bg-warning text-center center-block" style="margin: 30px">TURN AVMU OFF</button>
 </div>
