@@ -19,7 +19,6 @@ export class WolfhoundService {
 		this.socket = websocket.connect(wsUrl);
 		this.socket.subscribe(
 			(response: MessageEvent) => {
-				console.log(response.data);
 				let newData: WolfhoundData = JSON.parse(response.data)
 				this.wolfhoundData.next(newData);
 			}

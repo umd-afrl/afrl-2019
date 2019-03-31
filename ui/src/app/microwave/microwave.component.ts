@@ -47,7 +47,7 @@ export class MicrowaveComponent implements OnInit {
 			datasets: [
 				  {
 					data: this.dataPoints, // your data array
-					borderColor: '#FFAEFF',
+					borderColor: '#FF0000',
 					fill: false
 				  }
 				]
