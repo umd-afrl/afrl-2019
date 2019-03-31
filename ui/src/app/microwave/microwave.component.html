@@ -1,18 +1,6 @@
 <h3 class="text-center bg-warning">
 	Motion Detection
 </h3>
-<!--<p>-->
-	<!--Motion = 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No Motion = 0-->
-<!--</p>-->
-<div class="margin-left: 10px">
-<jqxChart #myChart
-		  [width]="getWidth()" [height]="200"
-		  [title]="''" [enableAxisTextAnimation]="true"
-		  [description]="''" [animationDuration]="10"
-		  [showLegend]="true" [enableAnimations]="true"
-		  [source]="data" [xAxis]="xAxis"
-		  [valueAxis]="valueAxis" [seriesGroups]="seriesGroups" [colorScheme]="'scheme01'">
-	      <!--[padding]="padding"-->
-		  <!--[titlePadding]="titlePadding"	-->
-</jqxChart>
+<div>
+	<canvas #lineChart>{{ chart }}</canvas>
 </div>

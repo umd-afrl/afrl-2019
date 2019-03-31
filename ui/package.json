@@ -27,6 +27,7 @@
     "angular-notifier": "^4.1.1",
     "bootstrap": "^4.3.1",
     "browserify-shim": "^3.8.14",
+    "chart.js": "^2.8.0",
     "d3": "^5.9.2",
     "jquery": "^3.3.1",
     "jqwidgets-framework": "^7.1.0",
