@@ -63,7 +63,11 @@ export class MicrowaveComponent implements OnInit {
 						display: true
 					}],
 					yAxes: [{
-						display: true
+						display: true,
+						ticks:{
+							suggestedMin: -0.5,
+							suggestedMax: 1.5
+						}
 					}],
 				}
 			}

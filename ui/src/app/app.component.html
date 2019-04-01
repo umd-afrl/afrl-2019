@@ -1,111 +1,118 @@
-<div class="row">
-	<div class="col-md-9.5">
+<div class="container text-center">
+	<div class="row">
+		<div class="col-md-9.5">
 
-		<!-- ********************************************************* -->
-		<div class="tab-content flex-column container-fluid order-0" id="v-pills-tabContent" style="margin: 10px">
+			<!-- ********************************************************* -->
+			<div class="tab-content flex-column container-fluid order-0" id="v-pills-tabContent" style="margin: 10px">
 
-			<div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
-				 aria-labelledby="v-pills-home-tab">
+				<div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+					 aria-labelledby="v-pills-home-tab">
 
-				<div class="row" style="margin: 10px">
-					<div class="col-auto-md-3, mx-auto">
-						<app-avmu></app-avmu>
-					</div>
+					<div class="row" style="margin: 10px">
+						<div class="col-auto-md-3, mx-auto">
+							<app-avmu></app-avmu>
+						</div>
 
-					<div class="col-md-9,mx-auto">
+						<div class="col-md-9,mx-auto">
 
-						<div class="row">
+							<div class="row">
 
-							<div class="col-md-12, mx-auto">
-								<app-video></app-video>
-								<app-wolfhound></app-wolfhound>
-								<p>
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								</p>
+								<div class="col-md-12, mx-auto">
+									<app-video></app-video>
+									<h3 class="text-center bg-warning">
+										Phone Detector
+									</h3>
+									<app-wolfhound></app-wolfhound>
+									<!--<p>-->
+									<!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+									<!--</p>-->
+
+								</div>
 
 							</div>
 
-						</div>
-
-						<div class="row">
-							<div class="col-md-2.5, mx-auto">
-								<app-microwave></app-microwave>
+							<div class="row">
+								<div class="col-md-2.5, mx-auto">
+									<app-microwave></app-microwave>
+								</div>
 							</div>
+
+
 						</div>
-
-
 					</div>
 				</div>
-			</div>
-			<div class="tab-pane fade" id="v-pills-video" role="tabpanel"
-				 aria-labelledby="v-pills-video-tab">
-				<img src="http://192.168.1.6:5000/snakecam" style="height: 550px; width: 750px"/>
-			</div>
-			<div class="tab-pane fade" id="v-pills-radar" role="tabpanel"
-				 aria-labelledby="v-pills-radar-tab">
-				<img src="/assets/img/Akela_Place_Holder.png"
-					 style="height: 550px; width: 100px">
+				<div class="tab-pane fade" id="v-pills-video" role="tabpanel"
+					 aria-labelledby="v-pills-video-tab">
+					<img src="http://192.168.1.6:5000/snakecam" style="height: 550px; width: 753px"/>
+				</div>
+				<div class="tab-pane fade" id="v-pills-radar" role="tabpanel"
+					 aria-labelledby="v-pills-radar-tab">
+					<img src="/assets/img/Akela_Place_Holder.png"
+						 style="height: 550px; width: 100px">
+				</div>
+
+				<div class="tab-pane fade" id="v-pills-rf" role="tabpanel"
+					 aria-labelledby="v-pills-rf-tab">
+					<!--<h3 class="text-center bg-warning">-->
+						<!--Phone Detector-->
+					<!--</h3>-->
+					<app-wolfhound></app-wolfhound>
+				</div>
+				<div class="tab-pane fade" id="v-pills-procedure" role="tabpanel"
+					 aria-labelledby="v-pills-procedure-tab">
+					<app-amber></app-amber>
+				</div>
+				<div class="tab-pane fade" id="v-pills-oprocedure" role="tabpanel"
+					 aria-labelledby="v-pills-oprocedure-tab">
+					<app-rubble></app-rubble>
+				</div>
+				<div class="tab-pane fade" id="v-pills-map" role="tabpanel"
+					 aria-labelledby="v-pills-map-tab">
+					<app-areamap></app-areamap>
+				</div>
+				<div class="tab-pane fade" id="v-pills-car" role="tabpanel" aria-labelledby="v-pills-car-tab">
+					<app-car></app-car>
+				</div>
 			</div>
 
-			<div class="tab-pane fade" id="v-pills-rf" role="tabpanel"
-				 aria-labelledby="v-pills-rf-tab">
-				<h4>Frequency: 706 MHz Signal Strength: 96 %</h4>
-				<img src="/assets/img/map.png" class="mr-lg-1" width="749" height="550">
-			</div>
-			<div class="tab-pane fade" id="v-pills-procedure" role="tabpanel"
-				 aria-labelledby="v-pills-procedure-tab">
-				<app-amber></app-amber>
-			</div>
-			<div class="tab-pane fade" id="v-pills-oprocedure" role="tabpanel"
-				 aria-labelledby="v-pills-oprocedure-tab">
-				<app-rubble></app-rubble>
-			</div>
-			<div class="tab-pane fade" id="v-pills-map" role="tabpanel"
-				 aria-labelledby="v-pills-map-tab">
-				<app-areamap></app-areamap>
-			</div>
-			<div class="tab-pane fade" id="v-pills-car" role="tabpanel" aria-labelledby="v-pills-car-tab">
-				<app-car></app-car>
-			</div>
+			<!-- ********************************************************* -->
+
 		</div>
 
-		<!-- ********************************************************* -->
+		<div class="col-md-2.5" style="margin: 10px">
+			<div class="nav flex-column  nav-pills text-left order-1 bg-dark" id="v-pills-tab" role="tablist"
+				 aria-orientation="vertical">
+				<a class="nav-link text-white" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home"
+				   role="tab"
+				   aria-controls="v-pills-home" aria-selected="true"><h5>4 Pack</h5></a>
+				<a class="nav-link text-white" id="v-pills-video-tab" data-toggle="pill" href="#v-pills-video"
+				   role="tab"
+				   aria-controls="v-pills-video" aria-selected="false"><h5>Live Video</h5></a>
+				<a class="nav-link text-white" id="v-pills-radar-tab" data-toggle="pill" href="#v-pills-radar"
+				   role="tab"
+				   aria-controls="v-pills-radar" aria-selected="false"><h5>AVMU Radar</h5></a>
+				<a class="nav-link text-white" id="v-pills-rf-tab" data-toggle="pill" href="#v-pills-rf"
+				   role="tab"
+				   aria-controls="v-pills-rf" aria-selected="true"><h5>Phone Detector</h5></a>
+				<a class="nav-link text-white" id="v-pills-procedure-tab" data-toggle="pill" href="#v-pills-procedure"
+				   role="tab"
+				   aria-controls="v-pills-procedure" aria-selected="false"><h5>Amber Procedure</h5></a>
+				<a class="nav-link text-white" id="v-pills-oprocedure-tab" data-toggle="pill" href="#v-pills-oprocedure"
+				   role="tab"
+				   aria-controls="v-pills-oprocedure" aria-selected="false"><h5>Rubble Procedure</h5></a>
+				<a class="nav-link text-white" id="v-pills-map-tab" data-toggle="pill" href="#v-pills-map"
+				   role="tab"
+				   aria-controls="v-pills-map" aria-selected="false"><h5>Area Map</h5></a>
+				<a class="nav-link text-white" id="v-pills-car-tab" data-toggle="pill" href="#v-pills-car" role="tab"
+				   aria-controls="v-pills-car" aria-selected="false"><h5>Car Schematic</h5></a>
+			</div>
 
-	</div>
+			<img src="/assets/img/UMDlogo1.png" style="height: 100px; width: 100px; margin: 20px"
+				 class="mr-lg-1 text-center center-block"/>
+			<br>
 
-	<div class="col-md-2.5" style="margin: 10px">
-		<div class="nav flex-column  nav-pills text-left order-1 bg-dark" id="v-pills-tab" role="tablist"
-			 aria-orientation="vertical">
-			<a class="nav-link text-white" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home"
-			   role="tab"
-			   aria-controls="v-pills-home" aria-selected="true"><h5>3 Pack</h5></a>
-			<a class="nav-link text-white" id="v-pills-video-tab" data-toggle="pill" href="#v-pills-video"
-			   role="tab"
-			   aria-controls="v-pills-video" aria-selected="false"><h5>Live Video</h5></a>
-			<a class="nav-link text-white" id="v-pills-radar-tab" data-toggle="pill" href="#v-pills-radar"
-			   role="tab"
-			   aria-controls="v-pills-radar" aria-selected="false"><h5>AVMU Radar</h5></a>
-			<a class="nav-link text-white" id="v-pills-rf-tab" data-toggle="pill" href="#v-pills-rf"
-			   role="tab"
-			   aria-controls="v-pills-rf" aria-selected="true"><h5>Phone Detector</h5></a>
-			<a class="nav-link text-white" id="v-pills-procedure-tab" data-toggle="pill" href="#v-pills-procedure"
-			   role="tab"
-			   aria-controls="v-pills-procedure" aria-selected="false"><h5>Amber Procedure</h5></a>
-			<a class="nav-link text-white" id="v-pills-oprocedure-tab" data-toggle="pill" href="#v-pills-oprocedure"
-			   role="tab"
-			   aria-controls="v-pills-oprocedure" aria-selected="false"><h5>Rubble Procedure</h5></a>
-			<a class="nav-link text-white" id="v-pills-map-tab" data-toggle="pill" href="#v-pills-map"
-			   role="tab"
-			   aria-controls="v-pills-map" aria-selected="false"><h5>Area Map</h5></a>
-			<a class="nav-link text-white" id="v-pills-car-tab" data-toggle="pill" href="#v-pills-car" role="tab"
-			   aria-controls="v-pills-car" aria-selected="false"><h5>Car Schematic</h5></a>
+			<img src="/assets/img/UDCLogo.jpg" style="height: 100px; width: 100px; margin: 20px"
+				 class="mr-lg-1 text-center center-block"/>
 		</div>
-
-		<img src="/assets/img/UMDlogo1.png" style="height: 100px; width: 100px; margin: 30px"
-			 class="mr-lg-1 text-center center-block"/>
-		<br>
-
-		<img src="/assets/img/UDCLogo.jpg" style="height: 100px; width: 100px; margin: 30px"
-			 class="mr-lg-1 text-center center-block"/>
 	</div>
 </div>
