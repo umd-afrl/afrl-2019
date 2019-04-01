@@ -56,6 +56,11 @@ export class AvmuComponent implements AfterViewInit {
 	}
 
 	ngAfterViewInit() {
+		let scale = d3.scaleLinear().domain([263.66, -8.49]).range([30, 541]);
+		var avmu_axis = d3.axisLeft(scale);
+		var svg = d3.select("#avmuScale").attr("width", "32").attr("height", 512)
+		svg.append("g").attr("transform", "translate(30, -30)").call(avmu_axis);
+
 		this.ctx = (this.canvas.nativeElement as HTMLCanvasElement).getContext('2d');
 		this.ctx.canvas.width = this.width;
 		this.ctx.canvas.height = this.height;
