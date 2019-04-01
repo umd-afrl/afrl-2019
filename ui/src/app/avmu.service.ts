@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {WebsocketService} from './websocket.service';
 import {Subject} from 'rxjs';
-import 'rxjs/add/operator/map';
+import {webSocket} from 'rxjs/webSocket';
+import {delay, retryWhen, tap} from 'rxjs/operators'
 
 const wsUrl = 'ws://192.168.1.7:8080/ws';
 
@@ -12,14 +12,19 @@ export interface RadarData {
 
 @Injectable()
 export class AvmuService {
-	socket: Subject<MessageEvent>;
+	socket;
 	public radarData = new Subject<RadarData>();
 
-	constructor(private websocket: WebsocketService) {
-		this.socket = websocket.connect(wsUrl);
+	constructor() {
+		this.socket = webSocket(wsUrl).pipe(
+			retryWhen((errors) => {
+				return errors.pipe(
+					tap(err => console.debug('AVMU socket error, retrying', err)),
+					delay(1000)
+				)
+			}));
 		this.socket.subscribe(
-			(response: MessageEvent) => {
-				let data = JSON.parse(response.data);
+			(data: RadarData) => {
 				this.radarData.next({magnitude: data[0][0], peaks: data[1]});
 			}
 		);

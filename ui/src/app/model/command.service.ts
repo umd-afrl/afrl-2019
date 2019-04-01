@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs';
-import {WebsocketService} from '../websocket.service';
 import {load, Root} from 'protobufjs';
 import {HUDModel} from './HUDModel';
 import {NotifierService} from 'angular-notifier';
 import {CommandFactory} from './commands/Command';
+import {WebsocketService} from '../websocket.service';
 
 @Injectable({
 	providedIn: 'root'
@@ -60,6 +60,6 @@ export class CommandService {
 		//	throw Error(errMsg);
 
 		// Create a new message
-		this.socket.next(new MessageEvent("text", {data: this.commandMessage.encode(this.commandMessage.create(payload)).finish()}));
+		this.socket.next(new MessageEvent('text', {data: this.commandMessage.encode(this.commandMessage.create(payload)).finish()}));
 	}
 }

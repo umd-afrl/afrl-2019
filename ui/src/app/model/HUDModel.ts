@@ -1,4 +1,4 @@
-import {BehaviorSubject, Observable, Observer, Subject} from 'rxjs';
+import {BehaviorSubject} from 'rxjs';
 
 export class HUDModel {
 	// Unidirectional Server to Client values
@@ -10,10 +10,10 @@ export class HUDModel {
 	public lightIntensity: BehaviorSubject<number>;
 
 	//ToDo make behavior subject <image>, write image command, have component that watches behavior for changes to make picture changes
-	public imageChange : BehaviorSubject<{[image: string]: boolean}>;
+	public imageChange: BehaviorSubject<{ [image: string]: boolean }>;
 
 	// Bidirectional values
-	public toggles: BehaviorSubject<{[name: string]: boolean}>;
+	public toggles: BehaviorSubject<{ [name: string]: boolean }>;
 
 	constructor() {
 		this.alert = new BehaviorSubject('');
@@ -24,7 +24,12 @@ export class HUDModel {
 
 		this.lightIntensity = new BehaviorSubject(.75);
 
-		this.toggles = new BehaviorSubject({['Lights']: false, ['Toggle 2']: false, ['Toggle 3']: false, ['Toggle 4']: false});
+		this.toggles = new BehaviorSubject({
+			['Lights']: false,
+			['Toggle 2']: false,
+			['Toggle 3']: false,
+			['Toggle 4']: false
+		});
 
 		this.imageChange = new BehaviorSubject({['Lights']: false});
 	}

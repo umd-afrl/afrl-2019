@@ -2,4 +2,3 @@
 /* Application-wide Styles */
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "~angular-notifier/styles.css";
-@import "~jqwidgets-scripts/jqwidgets/styles/jqx.base.css";

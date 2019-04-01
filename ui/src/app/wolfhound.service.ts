@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {WebsocketService} from './websocket.service';
 import {Subject} from 'rxjs';
-import 'rxjs/add/operator/map';
+import {webSocket} from 'rxjs/webSocket';
+import {delay, retryWhen, tap} from 'rxjs/operators';
 
 const wsUrl = 'ws://192.168.1.6:8090/';
 
@@ -10,17 +10,22 @@ export interface WolfhoundData {
 	signal_strength: number;
 }
 
-@Injectable( )
+@Injectable()
 export class WolfhoundService {
-	socket: Subject<MessageEvent>;
+	socket;
 	public wolfhoundData = new Subject<WolfhoundData>();
 
-  constructor(private websocket: WebsocketService) {
-		this.socket = websocket.connect(wsUrl);
+	constructor() {
+		this.socket = webSocket(wsUrl).pipe(
+			retryWhen((errors) => {
+				return errors.pipe(
+					tap(err => console.debug('Wolfhound socket error, retrying', err)),
+					delay(1000)
+				)
+			}));
 		this.socket.subscribe(
-			(response: MessageEvent) => {
-				let newData: WolfhoundData = JSON.parse(response.data)
-				this.wolfhoundData.next(newData);
+			(data: WolfhoundData) => {
+				this.wolfhoundData.next(data);
 			}
 		);
 	}

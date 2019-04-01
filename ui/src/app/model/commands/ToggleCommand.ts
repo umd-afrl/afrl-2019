@@ -1,4 +1,4 @@
-import {IncomingCommand, OutgoingCommand} from './Command';
+import {IncomingCommand} from './Command';
 import {CommandService} from '../command.service';
 
 export class IncomingToggleCommand implements IncomingCommand {

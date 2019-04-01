@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {WebsocketService} from './websocket.service';
 import {Subject} from 'rxjs';
-import 'rxjs/add/operator/map';
+import {webSocket} from 'rxjs/webSocket';
+import {delay, retryWhen, tap} from 'rxjs/operators';
 
 const wsUrl = 'ws://192.168.1.12/';
 
@@ -11,18 +11,25 @@ export interface MovementData {
 
 @Injectable()
 export class MicrowaveService {
-	socket: Subject<MessageEvent>;
+	socket;
 	public movementData = new Subject<MovementData>();
 
-	constructor(private websocket: WebsocketService) {
-		this.socket = websocket.connect(wsUrl);
+	constructor() {
+		this.socket = webSocket({
+			url: wsUrl,
+			deserializer: ({data}) => parseInt(data)
+		}).pipe(
+			retryWhen((errors) => {
+				return errors.pipe(
+					tap(err => console.debug('Microwave socket error, retrying', err)),
+					delay(1000)
+				)
+			}));
 		this.socket.subscribe(
-		(response: MessageEvent) => {
-			let data = parseInt(response.data);
-			this.movementData.next({
-				movement: data,
+			(movement: number) => {
+				let data = {movement: movement};
+				this.movementData.next(data);
 			});
-		});
 	}
 }
 

@@ -1,13 +1,12 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import { Chart } from 'chart.js';
+import {Chart} from 'chart.js';
 import {MicrowaveService} from '../microwave.service';
-import {WebsocketService} from '../websocket.service';
 
 @Component({
 	selector: 'app-microwave',
 	templateUrl: './microwave.component.html',
 	styleUrls: ['./microwave.component.css'],
-	providers: [MicrowaveService, WebsocketService]
+	providers: [MicrowaveService]
 })
 export class MicrowaveComponent implements OnInit {
 	@ViewChild('lineChart') chartRef: ElementRef;
@@ -19,7 +18,7 @@ export class MicrowaveComponent implements OnInit {
 	labels: any[] = [];
 
 	constructor(private microwaveService: MicrowaveService) {
-		for(let i = 0; i < 50; i++){
+		for (let i = 0; i < 50; i++) {
 			this.dataPoints.push({x: this.index, y: 0});
 			this.labels.push(this.index);
 			this.index++;
@@ -44,30 +43,30 @@ export class MicrowaveComponent implements OnInit {
 			type: 'line',
 			data: {
 				labels: this.labels,
-			datasets: [
-				  {
-					data: this.dataPoints, // your data array
-					borderColor: '#FF0000',
-					fill: false
-				  }
+				datasets: [
+					{
+						data: this.dataPoints, // your data array
+						borderColor: '#FF0000',
+						fill: false
+					}
 				]
-		  	},
-		  	options: {
+			},
+			options: {
 				animation: {
 					duration: 0
 				},
 				legend: {
-			  		display: false
+					display: false
 				},
 				scales: {
-			  		xAxes: [{
+					xAxes: [{
 						display: true
-			  		}],
-			  		yAxes: [{
+					}],
+					yAxes: [{
 						display: true
-			  		}],
+					}],
 				}
-		  	}
+			}
 		});
 	}
 }

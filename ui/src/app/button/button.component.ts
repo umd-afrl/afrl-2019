@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {CommandService} from "../model/command.service";
+import {CommandService} from '../model/command.service';
 
 @Component({
 	selector: 'app-button',

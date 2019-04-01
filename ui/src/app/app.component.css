@@ -9,16 +9,16 @@
 	line-height: 1rem;
 }
 
-div.jumbotron.hero-angle{
-    color:#000;
-    text-align:center;
-    background:url('/assets/img/hero-angle2.png');
-    background-size:cover;
-    background-position:center;
-    padding-top:0px;
-    padding-bottom:0px;
+div.jumbotron.hero-angle {
+	color: #000;
+	text-align: center;
+	background: url('/assets/img/hero-angle2.png');
+	background-size: cover;
+	background-position: center;
+	padding-top: 0px;
+	padding-bottom: 0px;
 }
 
-.wrapper{
-  margin-top: 15px;
+.wrapper {
+	margin-top: 15px;
 }

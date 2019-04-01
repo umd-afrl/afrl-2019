@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-amber',
-  templateUrl: './amber.component.html',
-  styleUrls: ['./amber.component.css']
+	selector: 'app-amber',
+	templateUrl: './amber.component.html',
+	styleUrls: ['./amber.component.css']
 })
 export class AmberComponent implements OnInit {
 
-  constructor() { }
+	constructor() {
+	}
 
-  ngOnInit() {
-  }
+	ngOnInit() {
+	}
 
 }

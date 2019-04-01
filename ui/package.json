@@ -30,8 +30,6 @@
     "chart.js": "^2.8.0",
     "d3": "^5.9.2",
     "jquery": "^3.3.1",
-    "jqwidgets-framework": "^7.1.0",
-    "jqwidgets-scripts": "^7.1.0",
     "protobufjs": "~6.8.8",
     "rxjs": "^6.4.0",
     "rxjs-compat": "^6.4.0",
