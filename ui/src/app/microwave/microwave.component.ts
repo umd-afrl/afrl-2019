@@ -46,7 +46,8 @@ export class MicrowaveComponent implements OnInit {
 				datasets: [
 					{
 						data: this.dataPoints, // your data array
-						borderColor: '#FF0000',
+						radius: 0,
+						borderColor: '#007bff',
 						fill: false
 					}
 				]
@@ -60,16 +61,21 @@ export class MicrowaveComponent implements OnInit {
 				},
 				scales: {
 					xAxes: [{
-						display: true
+						display: true,
+						ticks: {
+							display: true
+						},
 					}],
 					yAxes: [{
 						display: true,
 						ticks:{
 							suggestedMin: -0.5,
-							suggestedMax: 1.5
+							suggestedMax: 1.5,
+							display: false
 						}
 					}],
-				}
+				},
+				responsive: true
 			}
 		});
 	}

@@ -15,10 +15,11 @@ div.jumbotron.hero-angle {
 	background: url('/assets/img/hero-angle2.png');
 	background-size: cover;
 	background-position: center;
-	padding-top: 0px;
-	padding-bottom: 0px;
+	padding-top: 0;
+	padding-bottom: 0;
 }
 
 .wrapper {
 	margin-top: 15px;
 }
+
