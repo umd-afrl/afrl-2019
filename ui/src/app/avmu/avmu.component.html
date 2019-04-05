@@ -1,7 +1,38 @@
-<div class="container text-center p-0" style="max-width: 300px">
-	<h3 class="text-center bg-warning">
-		AVMU Radar
-	</h3>
-	<canvas #radarData class="img-fluid" style="width: 100%;height: 550px;"></canvas>
-	<button class="btn btn-warning" type="button">Stop Radar Transmission</button>
+<div class="row justify-content-center">
+	<div class="row w-100">
+		<div class="col">
+			<h3 class="text-center bg-warning">
+				AVMU Radar
+			</h3>
+		</div>
+	</div>
+	<div class="row w-100">
+		<div class="col-2 pr-0">
+			<svg id="avmuScale"></svg>
+		</div>
+		<div class="col-10 pl-0">
+			<canvas #radarData class="img-fluid float-right" style="height: 550px;"></canvas>
+		</div>
+	</div>
+	<div class="row w-100">
+		<div class="col">
+			<small class="font-weight-lighter">Distance in feet from radar antenna.</small>
+		</div>
+	</div>
+	<div class="row w-100">
+		<div class="col">
+			<div class="form-group d-inline-flex py-2 m-0">
+				<label class="pr-2" for="contrast">Contrast</label>
+				<input (change)="generateScale()" [(ngModel)]="contrast" class="custom-range" id="contrast" max="15.0"
+					   min="1.1" step="0.05"
+					   type="range" width="70%"/>
+			</div>
+		</div>
+	</div>
+	<div class="row w-100">
+		<div class="col">
+			<button class="btn btn-warning" type="button">Stop Radar Transmission</button>
+		</div>
+	</div>
 </div>
+
