@@ -590,7 +590,7 @@ export class AvmuComponent implements AfterViewInit {
 	generateScale() {
 		this.colorScale = d3.scaleLinear<string, number>().domain(Array.from(Array(300).keys())
 			.map((value) => {
-				return value * (1 / 300) * Math.pow(this.contrast, -2);
+				return value * (1 / 300) * Math.pow(this.contrast, -.5);
 			})).range(RAINBOW);
 		this.drawCanvas();
 	}
@@ -610,5 +610,9 @@ export class AvmuComponent implements AfterViewInit {
 				this.ctx.fill();
 			});
 		}
+	}
+
+	toggleTransmission() {
+		this.avmuService.toggleTransmission();
 	}
 }

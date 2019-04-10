@@ -1,7 +1,13 @@
 <h3 class="text-center bg-warning">
 	Phone Detector
 </h3>
-<p class="pb-2">
-	Frequency: {{frequency}}
-	Signal Strength: {{signal_strength}}
-</p>
+<div class="row justify-content-between">
+	<div class="col p-0 justify-content-between" style="font-size: 1.5rem;">
+		<label class="pr-2" for="freq">Frequency</label>
+		<span class="font-weight-bold" id="freq" style="font-size: 1.75rem;">{{frequency}} MHz</span>
+	</div>
+	<div class="col p-0 justify-content-between" style="font-size: 1.5rem;">
+		<label class="pr-2" for="str">Signal Strength</label>
+		<span class="font-weight-bold" id="str" style="font-size: 1.75rem;">{{signal_strength}}%</span>
+	</div>
+</div>
